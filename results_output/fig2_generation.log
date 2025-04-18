@@ -1,0 +1,28 @@
+2025-04-16 17:25:33,431 - INFO - Starting Figure 2 generation
+2025-04-16 17:25:33,431 - INFO - Loading data from /home/s_felix/FINAL_PROJECT/Data_Analysis/data/01_final_analysis_dataset.csv
+2025-04-16 17:25:33,926 - INFO - Loaded initial 287865 rows. Kept 285505 rows after removing NaNs/Infs in key columns.
+2025-04-16 17:25:33,928 - INFO - Temperatures found in data: [320.0, 348.0, 379.0, 413.0, 450.0]
+2025-04-16 17:25:33,928 - INFO - Will generate distribution plots for temperatures: [320.0, 348.0, 379.0, 413.0, 450.0]
+2025-04-16 17:25:33,928 - INFO - Will generate domain plot with highlights for temperatures: [320.0, 348.0, 379.0, 413.0, 450.0]
+2025-04-16 17:25:33,928 - INFO - --- Generating Distribution Plots ---
+2025-04-16 17:25:33,928 - INFO - Determining optimal axis limits for distribution plots...
+2025-04-16 17:25:33,982 - INFO - Low temp (<400K) x-max: 1.46, High temp (>=400K) x-max: 2.29
+2025-04-16 17:25:34,034 - INFO - Finished calculating axis limits for distribution plots.
+2025-04-16 17:25:34,040 - INFO - Generating distribution plot for 320.0K with 57101 records
+2025-04-16 17:25:35,005 - INFO - Saved distribution plot to /home/s_felix/FINAL_PROJECT/Data_Analysis/results_output/figures/fig2_temperature_320K_distribution.png
+2025-04-16 17:25:35,011 - INFO - Generating distribution plot for 348.0K with 57101 records
+2025-04-16 17:25:35,908 - INFO - Saved distribution plot to /home/s_felix/FINAL_PROJECT/Data_Analysis/results_output/figures/fig2_temperature_348K_distribution.png
+2025-04-16 17:25:35,915 - INFO - Generating distribution plot for 379.0K with 57101 records
+2025-04-16 17:25:36,817 - INFO - Saved distribution plot to /home/s_felix/FINAL_PROJECT/Data_Analysis/results_output/figures/fig2_temperature_379K_distribution.png
+2025-04-16 17:25:36,823 - INFO - Generating distribution plot for 413.0K with 57101 records
+2025-04-16 17:25:37,758 - INFO - Saved distribution plot to /home/s_felix/FINAL_PROJECT/Data_Analysis/results_output/figures/fig2_temperature_413K_distribution.png
+2025-04-16 17:25:37,764 - INFO - Generating distribution plot for 450.0K with 57101 records
+2025-04-16 17:25:38,626 - INFO - Saved distribution plot to /home/s_felix/FINAL_PROJECT/Data_Analysis/results_output/figures/fig2_temperature_450K_distribution.png
+2025-04-16 17:25:38,628 - INFO - --- Generating Domain-Level Plot ---
+2025-04-16 17:25:38,628 - INFO - Generating domain-level density scatter plot...
+2025-04-16 17:25:38,628 - INFO - Aggregating domain-level data from 285505 records...
+2025-04-16 17:25:38,643 - INFO - Generated valid domain-level data with 2015 domain-temperature pairs
+2025-04-16 17:25:38,648 - INFO - Calculating point density using Gaussian KDE...
+2025-04-16 17:25:38,722 - INFO - Adding highlights for temperatures: [320.0, 348.0, 379.0, 413.0, 450.0]
+2025-04-16 17:25:38,981 - INFO - Saved domain-level density plot to /home/s_felix/FINAL_PROJECT/Data_Analysis/results_output/figures/fig2_domain_level_density_scatter.png
+2025-04-16 17:25:38,981 - INFO - Figure 2 generation process finished.
