@@ -33,12 +33,12 @@ TEMP_COLORS = {
     450.0: '#d73027'   # Red
 }
 DIST_COLORS = {
-    'actual': '#E41A1C',    # Red for actual
+    'actual': '#DA7C2F',    # Red for actual
     'predicted': '#377EB8'  # Blue for predicted
 }
 FIG_DPI = 300
 KDE_SUBSET_SIZE = 30000  # For density calculation in scatter plot
-NUM_BINS = 100
+NUM_BINS = 1000
 
 # --- Logging Setup ---
 os.makedirs(OUTPUT_DIR, exist_ok=True)

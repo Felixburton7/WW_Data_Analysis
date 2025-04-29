@@ -34,9 +34,9 @@ MODEL_MAP = {
 }
 MODELS_TO_PLOT = ['DeepFlex', 'ESM-Only', 'VoxelFlex-3D']
 MODEL_COLORS = {
-    'DeepFlex': '#7154FF',      # Specified Purple/Blue
-    'ESM-Only': '#45CCAA',      # Specified Teal/Green
-    'VoxelFlex-3D': '#CA3E4A',  # Specified Red/Pink
+    'DeepFlex': '#677FB0',      # Specified Purple/Blue
+    'ESM-Only': '#CC7980',      # Specified Teal/Green
+    'VoxelFlex-3D': '#F2D8AC',  # Specified Red/Pink
 }
 PRIMARY_MODEL_NAME = 'DeepFlex'
 
@@ -266,56 +266,83 @@ def load_and_prepare_data(csv_path, logger):
 # --- Plotting Functions ---
 
 # Plot A: Secondary Structure (Box Plots) - No Fliers, Y-axis Zoomed
+# Plot A: Secondary Structure (Box Plots - Reverted to previous Boxplot Style)
 def plot_ss_performance(df, output_path, logger):
     """ Generates box plots of MAE per SS category, styled like reference."""
     global analysis_data
     panel_id = 'Panel A: Secondary Structure'
-    logger.info(f"Generating {panel_id}...")
+    logger.info(f"Generating {panel_id} (Box Plot)...")
     analysis_data[panel_id] = {}
 
     mae_cols = [f"{m}_MAE" for m in MODELS_TO_PLOT]
+    # Ensure SS_Category exists and handle potential issues
+    if 'SS_Category' not in df.columns:
+        logger.error("Panel A: SS_Category column missing. Skipping.")
+        analysis_data[panel_id]['Error'] = "SS_Category column missing."
+        return
+
+    # Prepare data, ensure Model names are clean
     plot_data = df[['SS_Category'] + mae_cols].melt(id_vars=['SS_Category'], var_name='Model', value_name='MAE')
     plot_data['Model'] = plot_data['Model'].str.replace('_MAE', '')
-    category_order = ['α-Helix', 'β-Sheet', 'Loop/Other']
+    plot_data = plot_data[plot_data['Model'].isin(MODELS_TO_PLOT)] # Filter relevant models
 
-    stats_summary = plot_data.groupby(['SS_Category', 'Model'], observed=False)['MAE'].agg(['mean', 'median', 'count']).unstack()
+    category_order = ['α-Helix', 'β-Sheet', 'Loop/Other']
+    # Filter data to include only expected categories before setting categorical type
+    plot_data = plot_data[plot_data['SS_Category'].isin(category_order)]
+    if plot_data.empty:
+        logger.error("Panel A: No data remaining after filtering for standard SS categories. Skipping.")
+        analysis_data[panel_id]['Error'] = "No data for standard SS categories."
+        return
+    plot_data['SS_Category'] = pd.Categorical(plot_data['SS_Category'], categories=category_order, ordered=True)
+
+    # Calculate stats for analysis CSV
+    stats_summary = plot_data.groupby(['SS_Category', 'Model'], observed=True)['MAE'].agg(['mean', 'median', 'count']).unstack()
     analysis_data[panel_id]['Stats (Mean/Median/Count by SS, Model)'] = stats_summary.to_dict()
 
     plt.figure(figsize=(6, 5))
     ax = plt.gca()
+    # Use the boxplot function
     sns.boxplot(
         data=plot_data, x='SS_Category', y='MAE', hue='Model',
-        order=category_order, palette=MODEL_COLORS,
+        order=category_order, palette=MODEL_COLORS, hue_order=MODELS_TO_PLOT,
         linewidth=1.0,
-        showfliers=False, # <-- Hide individual outlier points
-        width=0.6,
+        showfliers=False, # Hide individual outlier points
+        width=0.7,        # Adjusted width slightly
         dodge=True,
-        gap=0.1,
-        # whis=1.5, # Default: extend whiskers to 1.5 * IQR
+        gap=0.1,          # Add small gap between dodged boxes
         ax=ax
     )
 
-    # --- Y-axis zoom (keep from previous) ---
+    # --- Y-axis zoom (Optional but often good for boxplots) ---
     if not plot_data['MAE'].empty:
+        # Consider zooming based on IQR or percentiles if needed
+        # Example: Zoom based on 1st and 99th percentile
         lower_limit = plot_data['MAE'].quantile(0.01)
         upper_limit = plot_data['MAE'].quantile(0.99)
+        # Add buffer, ensure bottom is >= 0
         y_buffer = (upper_limit - lower_limit) * 0.05
         y_bottom = max(0, lower_limit - y_buffer)
         y_top = upper_limit + y_buffer
-        ax.set_ylim(bottom=y_bottom, top=y_top)
-        logger.info(f"Panel A: Setting Y-axis limits for focus: [{y_bottom:.3f}, {y_top:.3f}]")
-        analysis_data[panel_id]['Y-axis Limits'] = {'Bottom': y_bottom, 'Top': y_top}
+        # Apply limits if they provide a reasonable view
+        if y_top > y_bottom:
+             ax.set_ylim(bottom=y_bottom, top=y_top)
+             logger.info(f"Panel A: Setting Y-axis limits for focus: [{y_bottom:.3f}, {y_top:.3f}]")
+             analysis_data[panel_id]['Y-axis Limits'] = {'Bottom': y_bottom, 'Top': y_top}
+        else:
+             ax.set_ylim(bottom=0) # Fallback if calculation fails
+             logger.warning("Panel A: Could not determine appropriate Y-axis zoom limits.")
     else:
         logger.warning("Panel A: No MAE data available for Y-axis limits.")
         ax.set_ylim(bottom=0)
-    # ---------------------------------------
+    # -----------------------------------------------------
 
     ax.set_xlabel("Secondary Structure", fontsize=10)
     ax.set_ylabel("Mean Absolute Error (Å)", fontsize=10)
     ax.set_title("Performance by Secondary Structure", fontsize=12, pad=15)
-    ax.legend(title='Model', loc='upper left', frameon=False, fontsize=8.5)
+    ax.legend(title='Model', loc='upper left', frameon=False, fontsize=8.5) # Legend upper left
     ax.grid(axis='y', linestyle='-', color='white', linewidth=0.7, alpha=0.8)
     ax.set_axisbelow(True)
+
     plt.tight_layout()
     try:
         plt.savefig(output_path)
@@ -325,8 +352,8 @@ def plot_ss_performance(df, output_path, logger):
     finally:
         plt.close()
 
-
 # Plot B: Core/Exterior (Box Plot - No Fliers, Y-axis Zoomed)
+# Plot B: Core/Exterior (Box Plot - Reverted to previous Boxplot Style)
 def plot_core_exterior_performance(df, output_path, logger):
     """ Generates box plots of MAE per Core/Exterior category, styled like reference."""
     global analysis_data
@@ -335,51 +362,71 @@ def plot_core_exterior_performance(df, output_path, logger):
     analysis_data[panel_id] = {}
 
     mae_cols = [f"{m}_MAE" for m in MODELS_TO_PLOT]
-    plot_data = df[['Core_Exterior'] + mae_cols].melt(id_vars=['Core_Exterior'], var_name='Model', value_name='MAE')
-    plot_data = plot_data[plot_data['Core_Exterior'] != 'Unknown']
-    plot_data['Model'] = plot_data['Model'].str.replace('_MAE', '')
-    category_order = ['Core', 'Exterior']
+    # Ensure Core_Exterior exists
+    if 'Core_Exterior' not in df.columns:
+        logger.error("Panel B: Core_Exterior column missing. Skipping.")
+        analysis_data[panel_id]['Error'] = "Core_Exterior column missing."
+        return
 
-    stats_summary = plot_data.groupby(['Core_Exterior', 'Model'], observed=False)['MAE'].agg(['mean', 'median', 'count']).unstack()
+    # Prepare data
+    plot_data = df[['Core_Exterior'] + mae_cols].melt(id_vars=['Core_Exterior'], var_name='Model', value_name='MAE')
+    plot_data['Model'] = plot_data['Model'].str.replace('_MAE', '')
+    plot_data = plot_data[plot_data['Model'].isin(MODELS_TO_PLOT)] # Filter models
+
+    category_order = ['Core', 'Exterior']
+    # Filter data, handle 'Unknown' or other unexpected values
+    plot_data = plot_data[plot_data['Core_Exterior'].isin(category_order)]
+    if plot_data.empty:
+        logger.error("Panel B: No data remaining after filtering for Core/Exterior categories. Skipping.")
+        analysis_data[panel_id]['Error'] = "No data for Core/Exterior categories."
+        return
+    plot_data['Core_Exterior'] = pd.Categorical(plot_data['Core_Exterior'], categories=category_order, ordered=True)
+
+    # Calculate stats for analysis CSV
+    stats_summary = plot_data.groupby(['Core_Exterior', 'Model'], observed=True)['MAE'].agg(['mean', 'median', 'count']).unstack()
     analysis_data[panel_id]['Stats (Mean/Median/Count by Location, Model)'] = stats_summary.to_dict()
 
     plt.figure(figsize=(6, 5))
     ax = plt.gca()
+    # Use boxplot function
     sns.boxplot(
         data=plot_data, x='Core_Exterior', y='MAE', hue='Model',
-        order=category_order, palette=MODEL_COLORS,
+        order=category_order, palette=MODEL_COLORS, hue_order=MODELS_TO_PLOT,
         linewidth=1.0,
-        showfliers=False, # <-- Hide individual outlier points
+        showfliers=False, # Hide individual outliers
         width=0.6,
         dodge=True,
-        # whis=1.5, # Default: extend whiskers to 1.5 * IQR
         gap=0.1,
         ax=ax
     )
 
-    # --- Y-axis zoom (keep from previous) ---
+    # --- Y-axis zoom (Optional) ---
     if not plot_data['MAE'].empty:
         lower_limit = plot_data['MAE'].quantile(0.01)
         upper_limit = plot_data['MAE'].quantile(0.99)
         y_buffer = (upper_limit - lower_limit) * 0.05
         y_bottom = max(0, lower_limit - y_buffer)
         y_top = upper_limit + y_buffer
-        ax.set_ylim(bottom=y_bottom, top=y_top)
-        logger.info(f"Panel B: Setting Y-axis limits for focus: [{y_bottom:.3f}, {y_top:.3f}]")
-        analysis_data[panel_id]['Y-axis Limits'] = {'Bottom': y_bottom, 'Top': y_top}
+        if y_top > y_bottom:
+            ax.set_ylim(bottom=y_bottom, top=y_top)
+            logger.info(f"Panel B: Setting Y-axis limits for focus: [{y_bottom:.3f}, {y_top:.3f}]")
+            analysis_data[panel_id]['Y-axis Limits'] = {'Bottom': y_bottom, 'Top': y_top}
+        else:
+            ax.set_ylim(bottom=0)
+            logger.warning("Panel B: Could not determine appropriate Y-axis zoom limits.")
     else:
         logger.warning("Panel B: No MAE data available for Y-axis limits.")
         ax.set_ylim(bottom=0)
-    # ---------------------------------------
+    # --------------------------------
 
-    ax.set_xlabel("Residue Location (RSA ≤ 0.2)", fontsize=10)
+    ax.set_xlabel("Residue Location (RSA Threshold = 0.2)", fontsize=10)
     ax.set_ylabel("Mean Absolute Error (Å)", fontsize=10)
-    ax.set_title("Performance by Core/Exterior", fontsize=12, pad=15)
-    ax.legend(title='Model', loc='upper left', frameon=False, fontsize=8.5)
+    ax.set_title("Performance by Core/Exterior Location", fontsize=12, pad=15)
+    ax.legend(title='Model', loc='upper left', frameon=False, fontsize=8.5) # Legend upper left
     ax.grid(axis='y', linestyle='-', color='white', linewidth=0.7, alpha=0.8)
     ax.set_axisbelow(True)
-    plt.tight_layout()
 
+    plt.tight_layout()
     try:
         plt.savefig(output_path)
         logger.info(f"Saved plot to {output_path}")
@@ -390,146 +437,335 @@ def plot_core_exterior_performance(df, output_path, logger):
 
 # Plot C: Sequence Position (Line Plot w/ CI) - Reverted Y-axis, Legend inside
 def plot_position_performance(df, output_path, logger):
+    """
+    Generates a line plot of Mean MAE ± 95% CI along sequence position bins,
+    with outlined lines, grey background, white grid lines, and increased title spacing.
+    """
     global analysis_data
     panel_id = 'Panel C: Sequence Position'
-    logger.info(f"Generating {panel_id}...")
+    logger.info(f"Generating {panel_id} (Mean ± 95% CI, Outlined Lines, Grey BG, White Grid)...")
     analysis_data[panel_id] = {}
 
     mae_cols = [f"{m}_MAE" for m in MODELS_TO_PLOT]
-    # Check for 'Unknown' bin and exclude if present
-    if 'Unknown' in df['Position_Bin'].astype(str).unique():
-        logger.warning("Found 'Unknown' in Position_Bin. Excluding from plot.")
-        df_plot = df[df['Position_Bin'] != 'Unknown'].copy()
-    else:
-        df_plot = df.copy()
-    if df_plot.empty: logger.error("No data left for Position plot."); return
 
-    # Ensure Position_Bin is treated as categorical for grouping and ordering
+    # Select necessary columns
+    required_cols_for_plot = ['Position_Bin'] + mae_cols
+    if not all(col in df.columns for col in required_cols_for_plot):
+        missing = [c for c in required_cols_for_plot if c not in df.columns]
+        logger.error(f"Panel C: Missing required columns: {missing}. Skipping.")
+        analysis_data[panel_id]['Error'] = f"Missing required columns: {missing}"
+        return
+    if 'Position_Bin' not in df.columns or df['Position_Bin'].isnull().all():
+        logger.error("Panel C: 'Position_Bin' column is missing or empty. Skipping.")
+        analysis_data[panel_id]['Error'] = "'Position_Bin' column missing or empty."
+        return
+
+    df_plot = df[required_cols_for_plot].copy()
+
+    # --- Define the desired order explicitly ---
     _, pos_labels_order = create_position_bins(5)
     pos_labels_order_str = [str(lbl) for lbl in pos_labels_order]
-    if not pd.api.types.is_categorical_dtype(df_plot['Position_Bin']) or \
-       list(df_plot['Position_Bin'].cat.categories) != pos_labels_order_str:
-         df_plot['Position_Bin'] = df_plot['Position_Bin'].astype(str)
-         df_plot['Position_Bin'] = pd.Categorical(df_plot['Position_Bin'], categories=pos_labels_order_str, ordered=True)
 
-    # Group by the categorical bin, KEEP Position_Bin as index for reindexing
+    # --- Filter data to ONLY include the expected categories ---
+    df_plot['Position_Bin'] = df_plot['Position_Bin'].astype(str)
+    initial_rows = len(df_plot)
+    df_plot = df_plot[df_plot['Position_Bin'].isin(pos_labels_order_str)]
+    filtered_rows = len(df_plot)
+    if filtered_rows < initial_rows:
+        logger.warning(f"Panel C: Filtered out {initial_rows - filtered_rows} rows with unexpected Position_Bin values.")
+    if df_plot.empty:
+        logger.error("Panel C: No data left after filtering for expected Position_Bin categories. Skipping.")
+        analysis_data[panel_id]['Error'] = 'No data matching expected position bins.'
+        return
+
+    # --- Enforce the categorical type with the correct order ---
+    df_plot['Position_Bin'] = pd.Categorical(df_plot['Position_Bin'], categories=pos_labels_order_str, ordered=True)
+
+    # --- Group and Aggregate (Mean, Std, Count) ---
     plot_data_agg_grouped = df_plot.groupby('Position_Bin', observed=False)[mae_cols].agg(['mean', 'std', 'count'])
-    ordered_index = pd.CategoricalIndex(pos_labels_order_str, categories=pos_labels_order_str, ordered=True)
-    plot_data_agg = plot_data_agg_grouped.reindex(ordered_index) # Reindex, Position_Bin is the index
+    plot_data_plot = plot_data_agg_grouped # Use this directly
 
-    # --- FIX: Store analysis data BEFORE resetting index ---
+    # --- Store analysis data ---
     analysis_stats_cols = [(f"{m}_MAE", stat) for m in MODELS_TO_PLOT for stat in ['mean', 'count']]
-    analysis_stats_cols = [col for col in analysis_stats_cols if col in plot_data_agg.columns]
-    # Keep Position_Bin as index for the analysis dictionary structure
-    analysis_stats_df = plot_data_agg[analysis_stats_cols]
-    analysis_data[panel_id]['Stats (Mean/Count by Position Bin, Model)'] = analysis_stats_df.unstack().to_dict()
-    # ------------------------------------------------------
+    analysis_stats_cols_present = [col for col in analysis_stats_cols if col in plot_data_plot.columns]
+    if analysis_stats_cols_present:
+        analysis_stats_df = plot_data_plot[analysis_stats_cols_present]
+        analysis_data[panel_id]['Stats (Mean/Count by Position Bin, Model)'] = analysis_stats_df.unstack().to_dict()
+    else:
+        logger.warning("Panel C: No valid aggregated stats columns found for analysis_data.")
 
-    # Reset index AFTER storing stats, to get Position_Bin as column for plotting labels
-    plot_data_agg = plot_data_agg.reset_index()
+    # --- Prepare labels and positions for plotting ---
+    x_labels = plot_data_plot.index.astype(str).tolist()
+    x_pos = np.arange(len(x_labels))
 
     # --- Plotting ---
     plt.figure(figsize=(7, 5))
     ax = plt.gca()
-    x_labels = plot_data_agg['Position_Bin'].astype(str)
-    x_pos = np.arange(len(x_labels))
+    ax.set_facecolor('#f0f0f0') # SET GREY BACKGROUND
+
+    # --- Define Z-score for 95% CI ---
+    z_score_95 = 1.96
 
     for model_name in MODELS_TO_PLOT:
+        model_display_name = model_name
         mae_col = f"{model_name}_MAE"
-        mean_col = (mae_col, 'mean'); std_col = (mae_col, 'std')
-        if mean_col in plot_data_agg.columns and plot_data_agg[mean_col].notna().any():
-            means = plot_data_agg[mean_col]; stds = plot_data_agg.get(std_col)
-            ax.plot(x_pos, means, marker='o', linestyle='-', label=model_name,
-                    color=MODEL_COLORS.get(model_name, 'gray'), markersize=6, linewidth=1.8)
-            if stds is not None and stds.notna().any():
-                ax.fill_between(x_pos, means - stds.fillna(0), means + stds.fillna(0),
-                                color=MODEL_COLORS.get(model_name, 'gray'), alpha=0.15)
-        else: logger.warning(f"Skipping plot for {model_name} in position plot.")
+        mean_col = (mae_col, 'mean'); std_col = (mae_col, 'std'); count_col = (mae_col, 'count')
 
+        if mean_col in plot_data_plot.columns and plot_data_plot[mean_col].notna().any():
+            means = plot_data_plot[mean_col].values
+            stds = plot_data_plot.get(std_col)
+            counts = plot_data_plot.get(count_col)
+
+            sem_val = np.zeros_like(means)
+            if stds is not None and counts is not None:
+                stds_val = stds.values
+                counts_val = counts.values
+                valid_mask = (counts_val > 1) & (~np.isnan(stds_val)) & (~np.isnan(counts_val))
+                sem_val[valid_mask] = stds_val[valid_mask] / np.sqrt(counts_val[valid_mask])
+            else:
+                logger.warning(f"Std or Count column missing for {model_name}. Cannot calculate CI.")
+
+            ci_lower = means - z_score_95 * sem_val
+            ci_upper = means + z_score_95 * sem_val
+
+            color = MODEL_COLORS.get(model_name)
+            if color is None: color = 'grey'; logger.warning(f"Color not found for {model_name}.")
+
+            # 1. Plot Outline
+            ax.plot(x_pos, means, marker='', linestyle='-', label='',
+                    color='black', linewidth=2.5, zorder=2)
+
+            # 2. Plot Main Line
+            ax.plot(x_pos, means, marker='o', linestyle='-', label=model_display_name,
+                    color=color, markersize=7, linewidth=2.0, zorder=3)
+
+            # 3. Plot Shaded Region for 95% CI
+            ax.fill_between(x_pos, ci_lower, ci_upper,
+                            color=color, alpha=0.25)
+        else:
+            logger.warning(f"No valid data for plotting mean MAE for {model_name} in position plot.")
+
+    # --- Axis and Labels ---
     ax.set_xlabel("Normalized Sequence Position Bin", fontsize=10, labelpad=8)
     ax.set_ylabel("Mean Absolute Error (Å)", fontsize=10)
-    ax.set_title("Performance along Sequence Position (Mean ± SD)", fontsize=12, pad=25)
+    ax.set_title("Performance along Sequence Position (Mean ± 95% CI)", fontsize=12, pad=25)
 
     ax.set_xticks(x_pos)
-    ax.set_xticklabels(x_labels, rotation=20, ha='right', fontsize=8.5)
-    ax.set_ylim(bottom=0) # Show full range
-    ax.legend(title='Model', loc='upper center', bbox_to_anchor=(0.5, 1.0), ncol=len(MODELS_TO_PLOT), frameon=False, fontsize=8.5)
+    ax.set_xticklabels(x_labels, rotation=20, ha='right', fontsize=9)
+    ax.set_ylim(bottom=0)
+    ax.yaxis.set_major_locator(MaxNLocator(integer=False, prune='both', nbins=5))
 
-    ax.grid(axis='y', linestyle='-', color='white', linewidth=0.7, alpha=0.8)
-    ax.set_axisbelow(True)
-    plt.tight_layout(rect=[0, 0, 1, 0.95])
-    try: plt.savefig(output_path); logger.info(f"Saved plot to {output_path}")
-    except Exception as e: logger.error(f"Failed to save plot: {e}", exc_info=True)
-    finally: plt.close()
-    
+    # --- Legend Styling ---
+    handles, labels = ax.get_legend_handles_labels()
+    filtered_handles = [h for h, l in zip(handles, labels) if l]
+    filtered_labels = [l for l in labels if l]
+    ax.legend(filtered_handles, filtered_labels,
+              title='Model', loc='upper center',
+              bbox_to_anchor=(0.5, 1.15),
+              ncol=len(MODELS_TO_PLOT), frameon=False, fontsize=9)
+
+    # --- Spines and Ticks ---
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    spine_color = '#555555'
+    ax.spines['left'].set_color(spine_color)
+    ax.spines['bottom'].set_color(spine_color)
+    ax.tick_params(axis='x', colors=spine_color)
+    ax.tick_params(axis='y', colors=spine_color)
+
+    # --- ADD GRID LINES ---
+    ax.grid(axis='y', linestyle='-', color='white', linewidth=0.7, alpha=0.8, zorder=1) # Add white grid lines
+    ax.set_axisbelow(True) # Ensure grid is behind data
+
+    fig = plt.gcf()
+    fig.set_facecolor('#FFFFFF')
+
+    # Adjust tight_layout rect
+    plt.tight_layout(rect=[0, 0.03, 1, 0.90])
+
+    try:
+        plt.savefig(output_path)
+        logger.info(f"Saved plot to {output_path}")
+    except Exception as e:
+        logger.error(f"Failed to save plot: {e}", exc_info=True)
+    finally:
+        plt.close()
+
+
+
+        
 # Plot D: Relative Accessibility (Box Plot + Mean RMSF)
 def plot_accessibility_performance(df, output_path, logger):
-    """ Generates box plots of MAE per RSA quantile, with mean actual RMSF overlaid."""
+    """
+    Generates a line plot of Mean MAE per RSA quantile for each model,
+    styled like the reference image.
+    """
     global analysis_data
     panel_id = 'Panel D: Relative Accessibility'
-    logger.info(f"Generating {panel_id}...")
+    logger.info(f"Generating {panel_id} (Line Plot by Quantile)...")
     analysis_data[panel_id] = {}
 
     mae_cols = [f"{m}_MAE" for m in MODELS_TO_PLOT]
     label_col = 'RSA_Quantile_Label'
-    required_cols = [TARGET_COL, RSA_COL, label_col] + mae_cols
+    required_cols = [label_col] + mae_cols
 
+    # Check if required columns exist and if labels were generated correctly
     if not all(c in df.columns for c in required_cols) or \
        df[label_col].isnull().all() or \
-       df[label_col].astype(str).str.contains('Error|Unknown|Not Available', na=False).any():
-         logger.error(f"Valid data for RSA analysis not found. Skipping."); analysis_data[panel_id]['Error'] = f"Data missing/invalid."; return
+       'Not Available' in df[label_col].unique() or \
+       'Error' in df[label_col].unique():
+         logger.error(f"Panel D: Valid data for RSA analysis not found. Skipping.");
+         analysis_data[panel_id]['Error'] = f"Data missing or invalid labels in {label_col}."
+         return
 
-    plot_data_mae = df[[label_col] + mae_cols].melt(id_vars=[label_col], var_name='Model', value_name='MAE')
-    plot_data_mae['Model'] = plot_data_mae['Model'].str.replace('_MAE', '')
-    plot_data_mae.dropna(subset=['MAE'], inplace=True)
-    mean_rmsf_per_quantile = df.groupby(label_col, observed=False)[TARGET_COL].agg(['mean', 'count']).reset_index()
+    # --- Aggregate Mean MAE per Quantile per Model ---
+    plot_data_melted = df[[label_col] + mae_cols].melt(id_vars=[label_col], var_name='Model', value_name='MAE')
+    plot_data_melted['Model'] = plot_data_melted['Model'].str.replace('_MAE', '')
+    plot_data_melted = plot_data_melted[plot_data_melted['Model'].isin(MODELS_TO_PLOT)] # Filter models
+    plot_data_melted.dropna(subset=['MAE'], inplace=True)
 
+    # Calculate mean MAE
+    mean_mae_agg = plot_data_melted.groupby([label_col, 'Model'], observed=False)['MAE'].mean().unstack()
+
+    # Attempt numerical sort based on label, fall back to category order
     try:
-        mean_rmsf_per_quantile['sort_val'] = mean_rmsf_per_quantile[label_col].str.split('-').str[0].astype(float)
-        mean_rmsf_per_quantile = mean_rmsf_per_quantile.sort_values('sort_val')
-        quantile_order = mean_rmsf_per_quantile[label_col].tolist()
-        logger.info("Sorted RSA quantiles numerically.")
-    except Exception as e: logger.warning(f"Could not sort RSA Quantile Labels ({e}). Using default."); quantile_order = sorted(df[label_col].unique())
+        mean_mae_agg['sort_val'] = mean_mae_agg.index.str.split('-').str[0].astype(float)
+        mean_mae_agg = mean_mae_agg.sort_values('sort_val').drop(columns='sort_val')
+        quantile_order = mean_mae_agg.index.tolist()
+        logger.info("Sorted RSA quantiles numerically for plotting.")
+    except Exception as e:
+        logger.warning(f"Could not numerically sort RSA Quantile Labels for Panel D ({e}). Using default categorical order.")
+        # Ensure the original categorical order from data prep is used if possible
+        if pd.api.types.is_categorical_dtype(df[label_col]):
+            quantile_order = df[label_col].cat.categories.tolist()
+            # Filter out categories not present in aggregated data
+            quantile_order = [q for q in quantile_order if q in mean_mae_agg.index]
+            mean_mae_agg = mean_mae_agg.reindex(quantile_order) # Reindex based on original category order
+        else:
+            quantile_order = sorted(mean_mae_agg.index.unique()) # Fallback: alphabetical sort of existing labels
+            mean_mae_agg = mean_mae_agg.reindex(quantile_order)
 
-    plot_data_mae[label_col] = pd.Categorical(plot_data_mae[label_col], categories=quantile_order, ordered=True)
-    plot_data_mae = plot_data_mae.sort_values(label_col)
+    # Store stats
+    analysis_data[panel_id]['Mean MAE by RSA Quantile'] = mean_mae_agg.to_dict()
 
-    stats_mae_summary = plot_data_mae.groupby([label_col, 'Model'], observed=False)['MAE'].agg(['mean', 'median', 'count']).unstack()
-    analysis_data[panel_id]['MAE Stats (Mean/Median/Count by RSA Quantile, Model)'] = stats_mae_summary.to_dict()
-    rmsf_stats_dict = mean_rmsf_per_quantile.set_index(label_col)[['mean', 'count']].rename(columns={'mean':'Mean Actual RMSF'}).to_dict()
-    analysis_data[panel_id]['Actual RMSF Stats (Mean/Count by RSA Quantile)'] = rmsf_stats_dict
+    # --- Plotting ---
+    plt.figure(figsize=(7, 5))
+    ax = plt.gca()
+    ax.set_facecolor('#f0f0f0') # Grey background
 
-    fig, ax1 = plt.subplots(figsize=(7, 5))
-    sns.boxplot(
-        data=plot_data_mae, x=label_col, y='MAE', hue='Model', order=quantile_order,
-        palette=MODEL_COLORS, linewidth=1.0, fliersize=1.0, showfliers=False,
-        width=0.75, dodge=True, ax=ax1 # Ensure dodge for spacing
-    )
-    ax1.set_xlabel("Relative Solvent Accessibility (RSA) Quantile", fontsize=10)
-    ax1.set_ylabel("Mean Absolute Error (Å)", fontsize=10)
-    ax1.tick_params(axis='x', rotation=30, labelsize=8.5)
-    ax1.tick_params(axis='y', labelsize=8.5); ax1.set_ylim(bottom=0)
-
-    ax2 = ax1.twinx()
     x_pos = np.arange(len(quantile_order))
-    ax2.plot(x_pos, mean_rmsf_per_quantile['mean'], color='black', linestyle='--', linewidth=1.5, marker='^', markersize=5, label='Mean Actual RMSF')
-    ax2.set_ylabel("Mean Actual RMSF (Å)", fontsize=10, color='black')
-    ax2.tick_params(axis='y', labelcolor='black', labelsize=8.5); ax2.set_ylim(bottom=0)
 
-    lines1, labels1 = ax1.get_legend_handles_labels(); lines2, labels2 = ax2.get_legend_handles_labels()
-    valid_lines = [line for line in lines1 + lines2 if line is not None]; valid_labels = [label for i, label in enumerate(labels1 + labels2) if (lines1+lines2)[i] is not None]
-    if valid_lines: ax1.legend(valid_lines, valid_labels, title="Metric", loc='upper left', frameon=False, fontsize=8.5)
-    if ax2.get_legend(): ax2.get_legend().remove()
+    for model_name in MODELS_TO_PLOT:
+        if model_name in mean_mae_agg.columns:
+            means = mean_mae_agg[model_name].values
+            color = MODEL_COLORS.get(model_name, 'grey')
+            ax.plot(x_pos, means, marker='o', linestyle='-', label=model_name,
+                    color=color, markersize=7, linewidth=2.0)
+        else:
+            logger.warning(f"Data for model '{model_name}' not found in aggregated RSA data.")
 
-    ax1.set_title("Performance vs. Actual Flexibility by RSA Quantile", fontsize=12)
-    ax1.grid(axis='y', linestyle='-', color='white', linewidth=0.7, alpha=0.8); ax1.set_axisbelow(True)
-    ax2.grid(False)
-    ax1.set_xticks(x_pos); ax1.set_xticklabels(quantile_order, rotation=30, ha='right')
+    # --- Axis and Labels ---
+    ax.set_xlabel("Relative Solvent Accessibility (RSA) Quantile", fontsize=10)
+    ax.set_ylabel("Mean Absolute Error (Å)", fontsize=10)
+    ax.set_title("Performance by Solvent Accessibility", fontsize=12, pad=15) # Match reference title
+    ax.set_xticks(x_pos)
+    ax.set_xticklabels(quantile_order, rotation=30, ha='right', fontsize=8.5)
+    ax.set_ylim(bottom=0)
+    ax.yaxis.set_major_locator(MaxNLocator(nbins=5)) # Adjust number of y-ticks if needed
 
-    fig.tight_layout()
-    try: plt.savefig(output_path); logger.info(f"Saved plot to {output_path}")
-    except Exception as e: logger.error(f"Failed to save plot: {e}", exc_info=True)
-    finally: plt.close()
+    # --- Legend Styling ---
+    ax.legend(title='Model', loc='upper left', frameon=False, fontsize=8.5)
+
+    # --- Spines and Ticks ---
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    spine_color = '#555555' # Match other plots
+    ax.spines['left'].set_color(spine_color)
+    ax.spines['bottom'].set_color(spine_color)
+    ax.tick_params(axis='x', colors=spine_color)
+    ax.tick_params(axis='y', colors=spine_color)
+
+    # --- Grid Lines ---
+    ax.grid(axis='y', linestyle='-', color='white', linewidth=0.7, alpha=0.8, zorder=1)
+    ax.set_axisbelow(True)
+
+    fig = plt.gcf()
+    fig.set_facecolor('#FFFFFF')
+
+    plt.tight_layout()
+    try:
+        plt.savefig(output_path)
+        logger.info(f"Saved plot to {output_path}")
+    except Exception as e:
+        logger.error(f"Failed to save plot: {e}", exc_info=True)
+    finally:
+        plt.close()
+#     """ Generates box plots of MAE per RSA quantile, with mean actual RMSF overlaid."""
+#     global analysis_data
+#     panel_id = 'Panel D: Relative Accessibility'
+#     logger.info(f"Generating {panel_id}...")
+#     analysis_data[panel_id] = {}
+
+#     mae_cols = [f"{m}_MAE" for m in MODELS_TO_PLOT]
+#     label_col = 'RSA_Quantile_Label'
+#     required_cols = [TARGET_COL, RSA_COL, label_col] + mae_cols
+
+#     if not all(c in df.columns for c in required_cols) or \
+#        df[label_col].isnull().all() or \
+#        df[label_col].astype(str).str.contains('Error|Unknown|Not Available', na=False).any():
+#          logger.error(f"Valid data for RSA analysis not found. Skipping."); analysis_data[panel_id]['Error'] = f"Data missing/invalid."; return
+
+#     plot_data_mae = df[[label_col] + mae_cols].melt(id_vars=[label_col], var_name='Model', value_name='MAE')
+#     plot_data_mae['Model'] = plot_data_mae['Model'].str.replace('_MAE', '')
+#     plot_data_mae.dropna(subset=['MAE'], inplace=True)
+#     mean_rmsf_per_quantile = df.groupby(label_col, observed=False)[TARGET_COL].agg(['mean', 'count']).reset_index()
+
+#     try:
+#         mean_rmsf_per_quantile['sort_val'] = mean_rmsf_per_quantile[label_col].str.split('-').str[0].astype(float)
+#         mean_rmsf_per_quantile = mean_rmsf_per_quantile.sort_values('sort_val')
+#         quantile_order = mean_rmsf_per_quantile[label_col].tolist()
+#         logger.info("Sorted RSA quantiles numerically.")
+#     except Exception as e: logger.warning(f"Could not sort RSA Quantile Labels ({e}). Using default."); quantile_order = sorted(df[label_col].unique())
+
+#     plot_data_mae[label_col] = pd.Categorical(plot_data_mae[label_col], categories=quantile_order, ordered=True)
+#     plot_data_mae = plot_data_mae.sort_values(label_col)
+
+#     stats_mae_summary = plot_data_mae.groupby([label_col, 'Model'], observed=False)['MAE'].agg(['mean', 'median', 'count']).unstack()
+#     analysis_data[panel_id]['MAE Stats (Mean/Median/Count by RSA Quantile, Model)'] = stats_mae_summary.to_dict()
+#     rmsf_stats_dict = mean_rmsf_per_quantile.set_index(label_col)[['mean', 'count']].rename(columns={'mean':'Mean Actual RMSF'}).to_dict()
+#     analysis_data[panel_id]['Actual RMSF Stats (Mean/Count by RSA Quantile)'] = rmsf_stats_dict
+
+#     fig, ax1 = plt.subplots(figsize=(7, 5))
+#     sns.boxplot(
+#         data=plot_data_mae, x=label_col, y='MAE', hue='Model', order=quantile_order,
+#         palette=MODEL_COLORS, linewidth=1.0, fliersize=1.0, showfliers=False,
+#         width=0.75, dodge=True, ax=ax1 # Ensure dodge for spacing
+#     )
+#     ax1.set_xlabel("Relative Solvent Accessibility (RSA) Quantile", fontsize=10)
+#     ax1.set_ylabel("Mean Absolute Error (Å)", fontsize=10)
+#     ax1.tick_params(axis='x', rotation=30, labelsize=8.5)
+#     ax1.tick_params(axis='y', labelsize=8.5); ax1.set_ylim(bottom=0)
+
+#     ax2 = ax1.twinx()
+#     x_pos = np.arange(len(quantile_order))
+#     # ax2.plot(x_pos, mean_rmsf_per_quantile['mean'], color='black', linestyle='--', linewidth=1.5, marker='^', markersize=5, label='Mean Actual RMSF')
+#     # ax2.set_ylabel("Mean Actual RMSF (Å)", fontsize=10, color='black')
+#     # ax2.tick_params(axis='y', labelcolor='black', labelsize=8.5); ax2.set_ylim(bottom=0)
+
+#     lines1, labels1 = ax1.get_legend_handles_labels(); lines2, labels2 = ax2.get_legend_handles_labels()
+#     valid_lines = [line for line in lines1 + lines2 if line is not None]; valid_labels = [label for i, label in enumerate(labels1 + labels2) if (lines1+lines2)[i] is not None]
+#     if valid_lines: ax1.legend(valid_lines, valid_labels, title="Metric", loc='upper left', frameon=False, fontsize=8.5)
+#     if ax2.get_legend(): ax2.get_legend().remove()
+
+#     ax1.set_title("Performance vs. Actual Flexibility by RSA Quantile", fontsize=12)
+#     ax1.grid(axis='y', linestyle='-', color='white', linewidth=0.7, alpha=0.8); ax1.set_axisbelow(True)
+#     ax2.grid(False)
+#     ax1.set_xticks(x_pos); ax1.set_xticklabels(quantile_order, rotation=30, ha='right')
+
+#     fig.tight_layout()
+#     try: plt.savefig(output_path); logger.info(f"Saved plot to {output_path}")
+#     except Exception as e: logger.error(f"Failed to save plot: {e}", exc_info=True)
+#     finally: plt.close()
 
 
 # Plot E: B-factor Quantiles (Box Plots)
@@ -736,80 +972,99 @@ AMINO_ACID_FULL_NAMES = {
 # analysis_data = {} # Global dict for analysis
 
 # Plot G: Grouped Bar Plot of Mean MAE by Amino Acid (Styled) - Abbreviations, Vertical Ticks
+
 def plot_grouped_mae_by_aa(df, output_path, logger):
-    """Generates the primary AA performance plot (grouped bars, styled)
-       with 3-letter amino acid abbreviations and vertical ticks."""
+    """
+    Generates grouped bar plot of Mean MAE ± 95% CI by Amino Acid,
+    sorted LOWEST to HIGHEST by DeepFlex performance, with legend upper left.
+    """
     global analysis_data
     panel_id = 'Panel G: Amino Acid Performance'
-    logger.info(f"Generating {panel_id}...")
+    logger.info(f"Generating {panel_id} (Bar Plot - Mean ± 95% CI, Sorted by {PRIMARY_MODEL_NAME}, Legend Left)...")
     analysis_data[panel_id] = {}
 
     mae_cols = [f"{m}_MAE" for m in MODELS_TO_PLOT]
     required_cols = [RESNAME_COL] + mae_cols
-    if not all(col in df.columns for col in required_cols):
-        logger.error(f"Missing required MAE columns: {required_cols}. Skipping."); analysis_data[panel_id]['Error'] = f"Missing columns: {required_cols}"; return
+    if not all(col in df.columns for col in required_cols) or RESNAME_COL not in df.columns:
+        logger.error(f"Missing required columns for Panel G. Skipping.");
+        analysis_data[panel_id]['Error'] = "Missing required columns."
+        return
 
     plot_data_melted = df[[RESNAME_COL] + mae_cols].melt(id_vars=RESNAME_COL, var_name='Model', value_name='MAE')
     plot_data_melted['Model'] = plot_data_melted['Model'].str.replace('_MAE', '')
-    plot_data_melted = plot_data_melted[plot_data_melted['Model'].isin(MODELS_TO_PLOT)].dropna(subset=['MAE'])
 
-    stats_summary = plot_data_melted.groupby([RESNAME_COL, 'Model'], observed=False)['MAE'].agg(['mean', 'median', 'count']).unstack()
-    analysis_data[panel_id]['Stats (Mean/Median/Count by AA, Model)'] = stats_summary.to_dict()
+    # Filter only standard AAs and valid models/MAE
+    standard_aas = list(AMINO_ACID_FULL_NAMES.keys())
+    plot_data_melted = plot_data_melted[
+        plot_data_melted[RESNAME_COL].isin(standard_aas) &
+        plot_data_melted['Model'].isin(MODELS_TO_PLOT)
+    ].dropna(subset=['MAE'])
 
-    mean_mae_summary = stats_summary.get('mean', pd.DataFrame())
-    sort_key_col = PRIMARY_MODEL_NAME
-    if sort_key_col in mean_mae_summary.columns:
-         mean_mae_summary = mean_mae_summary.sort_values(by=sort_key_col)
-         aa_order = mean_mae_summary.index.tolist() # Keep 3-letter codes for ordering AND labels
-         analysis_data[panel_id]['AA Order (Best to Worst DeepFlex Mean MAE)'] = aa_order
-         logger.info(f"Confirmed: Amino acids ordered by {PRIMARY_MODEL_NAME} Mean MAE.")
-         analysis_data[panel_id]['Top 3 AAs (DeepFlex Lowest Mean MAE)'] = mean_mae_summary[sort_key_col].nsmallest(3).to_dict()
-         analysis_data[panel_id]['Bottom 3 AAs (DeepFlex Highest Mean MAE)'] = mean_mae_summary[sort_key_col].nlargest(3).to_dict()
+    if plot_data_melted.empty:
+        logger.error("Panel G: No valid data remaining after filtering. Skipping."); return
+
+    # Calculate stats: Mean, Median, Count
+    # Important: Group by RESNAME first, then Model to get stats per AA per Model
+    stats_summary = plot_data_melted.groupby([RESNAME_COL, 'Model'], observed=True)['MAE'].agg(['mean', 'std', 'count', 'sem']).reset_index() # Use SEM for CI
+
+    analysis_data[panel_id]['Stats (Mean/Std/Count/SEM by AA, Model)'] = stats_summary.set_index([RESNAME_COL, 'Model']).unstack().to_dict() # Save detailed stats
+
+    # Determine Amino Acid Order based on DeepFlex Mean MAE (Lowest to Highest)
+    deepflex_stats = stats_summary[stats_summary['Model'] == PRIMARY_MODEL_NAME].copy()
+    if not deepflex_stats.empty:
+         # Sort the DeepFlex stats by the 'mean' column (lowest first)
+         deepflex_stats_sorted = deepflex_stats.sort_values(by='mean', ascending=True)
+         # Get the order of amino acids from the sorted DataFrame
+         aa_order = deepflex_stats_sorted[RESNAME_COL].tolist()
+         analysis_data[panel_id]['AA Order (Lowest to Highest DeepFlex Mean MAE)'] = aa_order
+         logger.info(f"Confirmed: Amino acids ordered by {PRIMARY_MODEL_NAME} Mean MAE (Lowest first).")
+         analysis_data[panel_id]['Top 3 AAs (DeepFlex Lowest Mean MAE)'] = deepflex_stats_sorted.nsmallest(3, 'mean').set_index(RESNAME_COL)['mean'].to_dict()
+         analysis_data[panel_id]['Bottom 3 AAs (DeepFlex Highest Mean MAE)'] = deepflex_stats_sorted.nlargest(3, 'mean').set_index(RESNAME_COL)['mean'].to_dict()
     else:
-         logger.warning(f"Cannot sort by '{sort_key_col}', using default AA order.")
+         logger.warning(f"Could not find stats for '{PRIMARY_MODEL_NAME}' to sort by. Using alphabetical AA order.")
          aa_order = sorted(plot_data_melted[RESNAME_COL].unique())
          analysis_data[panel_id]['AA Order'] = 'Default alphabetical (sorting failed)'
 
     # --- Plotting ---
-    plt.figure(figsize=(17, 7)) # Keep previous size
+    plt.figure(figsize=(12, 5)) # Adjusted figsize slightly
     ax = plt.gca()
+    # Use the calculated aa_order in the plot function
     sns.barplot(
-        data=plot_data_melted, x=RESNAME_COL, y='MAE', hue='Model', order=aa_order,
-        palette=MODEL_COLORS, hue_order=MODELS_TO_PLOT, errorbar=('ci', 95),
-        err_kws={'color': 'black', 'linewidth': 0.8}, capsize=0.05,
-        edgecolor='black', linewidth=1.0, width=0.85, ax=ax, gap=0.2
+        data=plot_data_melted, x=RESNAME_COL, y='MAE', hue='Model',
+        order=aa_order, # Use the CORRECTLY SORTED order
+        palette=MODEL_COLORS, hue_order=MODELS_TO_PLOT,
+        errorbar=('ci', 95), # Seaborn calculates CI from data directly
+        err_kws={'linewidth': 1, 'color': 'black'}, capsize=0.05,
+        edgecolor='black', linewidth=0.8, ax=ax
     )
-  
 
-    # Y-axis zoom
-    all_means_flat = mean_mae_summary.values.flatten()
-    if len(all_means_flat) > 0 and not np.all(np.isnan(all_means_flat)):
-        min_val = np.nanmin(all_means_flat); max_val = np.nanmax(all_means_flat)
-        y_bottom = max(0, min_val * 0.90); y_top = max_val * 1.10
-        ax.set_ylim(bottom=y_bottom, top=y_top)
-        analysis_data[panel_id]['Y-axis Limits'] = {'Bottom': y_bottom, 'Top': y_top}
-    else: logger.warning("Plot G: No valid mean MAE data for Y-axis limits."); ax.set_ylim(bottom=0)
-
-    # --- Label and Tick Adjustments ---
-    ax.set_xlabel("Amino Acid", fontsize=11, labelpad=10)
-    ax.set_ylabel("Mean Absolute Error (Å)", fontsize=11)
-    ax.set_title("Mean Model Performance (±95% CI) by Amino Acid", fontsize=13)
-
-    # Set the tick positions based on the number of amino acids
+    ax.set_xlabel("Amino Acid", fontsize=10)
+    ax.set_ylabel("Mean Absolute Error (Å)", fontsize=10)
+    ax.set_title("Performance by Amino Acid", fontsize=12) # Simplified title
     ax.set_xticks(np.arange(len(aa_order)))
-    # Set the tick labels using the 3-letter abbreviations, rotated vertically
-    ax.set_xticklabels(aa_order, rotation=90, ha='center', fontsize=9) # Vertical rotation, center align
-
+    ax.set_xticklabels(aa_order, rotation=90, ha='center', fontsize=9) # Use 3-letter codes
     ax.tick_params(axis='y', labelsize=9.5)
-    # ----------------------------------
+    ax.set_ylim(bottom=0) # Start y-axis at 0
 
-    ax.grid(axis='y', linestyle='-', color='white', linewidth=0.7, alpha=0.8); ax.set_axisbelow(True)
+    # --- Auto-adjust y-limits (optional, can fine-tune) ---
+    # Calculate approximate max CI value for setting ylim buffer
+    if not stats_summary.empty:
+         stats_summary['ci_upper'] = stats_summary['mean'] + 1.96 * stats_summary['sem'].fillna(0)
+         max_ci_val = stats_summary['ci_upper'].max()
+         if pd.notna(max_ci_val):
+             ax.set_ylim(bottom=0, top=max_ci_val * 1.05) # Add 5% buffer
+             analysis_data[panel_id]['Y-axis Limits'] = {'Bottom': ax.get_ylim()[0], 'Top': ax.get_ylim()[1]}
+         else:
+             logger.warning("Could not calculate max CI for Y-limit adjustment.")
+    # -------------------------------------------------------
+
+    ax.grid(axis='y', linestyle='-', color='white', linewidth=0.7, alpha=0.8)
+    ax.set_axisbelow(True)
     handles, labels = ax.get_legend_handles_labels()
-    ax.legend(loc='upper left')
-    # ax.legend(handles=handles, labels=labels, title="Model", loc='upper left', bbox_to_anchor=(1.01, 1), frameon=False)
-    # Adjust layout - might need slightly more bottom space for vertical labels
-    plt.tight_layout(rect=[0, 0.05, 0.92, 1])
+    # --- Move Legend to Upper Left ---
+    ax.legend(handles=handles, labels=labels, title="Model", loc='upper left', frameon=False, fontsize=7.5)
 
+    plt.tight_layout()
     try: plt.savefig(output_path); logger.info(f"Saved plot to {output_path}")
     except Exception as e: logger.error(f"Failed to save plot: {e}", exc_info=True)
     finally: plt.close()
@@ -921,9 +1176,9 @@ def main():
     # --- Generate plots with final naming convention ---
     plot_ss_performance(df, OUTPUT_DIR / "figure4_a_ss.png", logger)
     plot_core_exterior_performance(df, OUTPUT_DIR / "figure4_b_core_exterior.png", logger)
-    # plot_position_performance(df, OUTPUT_DIR / "figure4_c_position.png", logger)
+    plot_position_performance(df, OUTPUT_DIR / "figure4_c_position.png", logger)
     plot_accessibility_performance(df, OUTPUT_DIR / "figure4_d_accessibility.png", logger)
-    # plot_bfactor_boxplot_quantiles(df, OUTPUT_DIR / "figure4_e_bfactor.png", logger) # Changed B-factor plot
+    plot_bfactor_boxplot_quantiles(df, OUTPUT_DIR / "figure4_e_bfactor.png", logger) # Changed B-factor plot
 
     if PHI_COL in df.columns and PSI_COL in df.columns:
         plot_ramachandran_error(df, OUTPUT_DIR / "figure4_f_ramachandran.png", logger) # Reverted KDE

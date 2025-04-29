@@ -1,0 +1,569 @@
+Panel_ID,Plot_Type,X_Axis_Variable,Y_Axis_Variable,Model,Group_Name,Statistic,Value
+Overall,Dataset Info,N/A,N/A,N/A,N/A,Total Rows Loaded,287865
+Overall,Dataset Info,N/A,N/A,N/A,N/A,Rows after MAE NaN Drop,287489
+Overall,Dataset Info,N/A,N/A,N/A,N/A,Rows after Final Processing,NaN
+Overall,Performance Metric,Across All Data,MAE,DeepFlex,N/A,Mean,0.1352
+Overall,Performance Metric,Across All Data,MAE,DeepFlex,N/A,Median,0.0779
+Overall,Performance Metric,Across All Data,MAE,ESM-Only,N/A,Mean,0.1725
+Overall,Performance Metric,Across All Data,MAE,ESM-Only,N/A,Median,0.1239
+Overall,Performance Metric,Across All Data,MAE,VoxelFlex-3D,N/A,Mean,0.1913
+Overall,Performance Metric,Across All Data,MAE,VoxelFlex-3D,N/A,Median,0.1168
+Panel A,Boxplot,SS_Category,MAE,DeepFlex,Loop/Other,Mean,0.1539
+Panel A,Boxplot,SS_Category,MAE,DeepFlex,Loop/Other,Median,0.0976
+Panel A,Boxplot,SS_Category,MAE,DeepFlex,Loop/Other,Count,117990
+Panel A,Boxplot,SS_Category,MAE,DeepFlex,Loop/Other,Q1,0.0414
+Panel A,Boxplot,SS_Category,MAE,DeepFlex,Loop/Other,Q3,0.2134
+Panel A,Boxplot,SS_Category,MAE,ESM-Only,Loop/Other,Mean,0.1872
+Panel A,Boxplot,SS_Category,MAE,ESM-Only,Loop/Other,Median,0.1381
+Panel A,Boxplot,SS_Category,MAE,ESM-Only,Loop/Other,Count,117727
+Panel A,Boxplot,SS_Category,MAE,ESM-Only,Loop/Other,Q1,0.0621
+Panel A,Boxplot,SS_Category,MAE,ESM-Only,Loop/Other,Q3,0.2628
+Panel A,Boxplot,SS_Category,MAE,VoxelFlex-3D,Loop/Other,Mean,0.2149
+Panel A,Boxplot,SS_Category,MAE,VoxelFlex-3D,Loop/Other,Median,0.1403
+Panel A,Boxplot,SS_Category,MAE,VoxelFlex-3D,Loop/Other,Count,117365
+Panel A,Boxplot,SS_Category,MAE,VoxelFlex-3D,Loop/Other,Q1,0.0616
+Panel A,Boxplot,SS_Category,MAE,VoxelFlex-3D,Loop/Other,Q3,0.3063
+Panel A,Boxplot,SS_Category,MAE,DeepFlex,α-Helix,Mean,0.1288
+Panel A,Boxplot,SS_Category,MAE,DeepFlex,α-Helix,Median,0.0753
+Panel A,Boxplot,SS_Category,MAE,DeepFlex,α-Helix,Count,110125
+Panel A,Boxplot,SS_Category,MAE,DeepFlex,α-Helix,Q1,0.0305
+Panel A,Boxplot,SS_Category,MAE,DeepFlex,α-Helix,Q3,0.1761
+Panel A,Boxplot,SS_Category,MAE,ESM-Only,α-Helix,Mean,0.1661
+Panel A,Boxplot,SS_Category,MAE,ESM-Only,α-Helix,Median,0.1210
+Panel A,Boxplot,SS_Category,MAE,ESM-Only,α-Helix,Count,110858
+Panel A,Boxplot,SS_Category,MAE,ESM-Only,α-Helix,Q1,0.0533
+Panel A,Boxplot,SS_Category,MAE,ESM-Only,α-Helix,Q3,0.2363
+Panel A,Boxplot,SS_Category,MAE,VoxelFlex-3D,α-Helix,Mean,0.1889
+Panel A,Boxplot,SS_Category,MAE,VoxelFlex-3D,α-Helix,Median,0.1181
+Panel A,Boxplot,SS_Category,MAE,VoxelFlex-3D,α-Helix,Count,110835
+Panel A,Boxplot,SS_Category,MAE,VoxelFlex-3D,α-Helix,Q1,0.0500
+Panel A,Boxplot,SS_Category,MAE,VoxelFlex-3D,α-Helix,Q3,0.2747
+Panel A,Boxplot,SS_Category,MAE,DeepFlex,β-Sheet,Mean,0.1090
+Panel A,Boxplot,SS_Category,MAE,DeepFlex,β-Sheet,Median,0.0485
+Panel A,Boxplot,SS_Category,MAE,DeepFlex,β-Sheet,Count,57390
+Panel A,Boxplot,SS_Category,MAE,DeepFlex,β-Sheet,Q1,0.0200
+Panel A,Boxplot,SS_Category,MAE,DeepFlex,β-Sheet,Q3,0.1335
+Panel A,Boxplot,SS_Category,MAE,ESM-Only,β-Sheet,Mean,0.1546
+Panel A,Boxplot,SS_Category,MAE,ESM-Only,β-Sheet,Median,0.1032
+Panel A,Boxplot,SS_Category,MAE,ESM-Only,β-Sheet,Count,57700
+Panel A,Boxplot,SS_Category,MAE,ESM-Only,β-Sheet,Q1,0.0452
+Panel A,Boxplot,SS_Category,MAE,ESM-Only,β-Sheet,Q3,0.2152
+Panel A,Boxplot,SS_Category,MAE,VoxelFlex-3D,β-Sheet,Mean,0.1477
+Panel A,Boxplot,SS_Category,MAE,VoxelFlex-3D,β-Sheet,Median,0.0709
+Panel A,Boxplot,SS_Category,MAE,VoxelFlex-3D,β-Sheet,Count,57690
+Panel A,Boxplot,SS_Category,MAE,VoxelFlex-3D,β-Sheet,Q1,0.0350
+Panel A,Boxplot,SS_Category,MAE,VoxelFlex-3D,β-Sheet,Q3,0.1870
+Panel B,Boxplot,Core_Exterior,MAE,DeepFlex,Core,Mean,0.1132
+Panel B,Boxplot,Core_Exterior,MAE,DeepFlex,Core,Median,0.0554
+Panel B,Boxplot,Core_Exterior,MAE,DeepFlex,Core,Count,107760
+Panel B,Boxplot,Core_Exterior,MAE,DeepFlex,Core,Q1,0.0223
+Panel B,Boxplot,Core_Exterior,MAE,DeepFlex,Core,Q3,0.1448
+Panel B,Boxplot,Core_Exterior,MAE,ESM-Only,Core,Mean,0.1563
+Panel B,Boxplot,Core_Exterior,MAE,ESM-Only,Core,Median,0.1085
+Panel B,Boxplot,Core_Exterior,MAE,ESM-Only,Core,Count,108556
+Panel B,Boxplot,Core_Exterior,MAE,ESM-Only,Core,Q1,0.0475
+Panel B,Boxplot,Core_Exterior,MAE,ESM-Only,Core,Q3,0.2196
+Panel B,Boxplot,Core_Exterior,MAE,VoxelFlex-3D,Core,Mean,0.1578
+Panel B,Boxplot,Core_Exterior,MAE,VoxelFlex-3D,Core,Median,0.0829
+Panel B,Boxplot,Core_Exterior,MAE,VoxelFlex-3D,Core,Count,108550
+Panel B,Boxplot,Core_Exterior,MAE,VoxelFlex-3D,Core,Q1,0.0380
+Panel B,Boxplot,Core_Exterior,MAE,VoxelFlex-3D,Core,Q3,0.2153
+Panel B,Boxplot,Core_Exterior,MAE,DeepFlex,Exterior,Mean,0.1485
+Panel B,Boxplot,Core_Exterior,MAE,DeepFlex,Exterior,Median,0.0936
+Panel B,Boxplot,Core_Exterior,MAE,DeepFlex,Exterior,Count,177745
+Panel B,Boxplot,Core_Exterior,MAE,DeepFlex,Exterior,Q1,0.0393
+Panel B,Boxplot,Core_Exterior,MAE,DeepFlex,Exterior,Q3,0.2052
+Panel B,Boxplot,Core_Exterior,MAE,ESM-Only,Exterior,Mean,0.1824
+Panel B,Boxplot,Core_Exterior,MAE,ESM-Only,Exterior,Median,0.1342
+Panel B,Boxplot,Core_Exterior,MAE,ESM-Only,Exterior,Count,177729
+Panel B,Boxplot,Core_Exterior,MAE,ESM-Only,Exterior,Q1,0.0600
+Panel B,Boxplot,Core_Exterior,MAE,ESM-Only,Exterior,Q3,0.2573
+Panel B,Boxplot,Core_Exterior,MAE,VoxelFlex-3D,Exterior,Mean,0.2117
+Panel B,Boxplot,Core_Exterior,MAE,VoxelFlex-3D,Exterior,Median,0.1394
+Panel B,Boxplot,Core_Exterior,MAE,VoxelFlex-3D,Exterior,Count,177340
+Panel B,Boxplot,Core_Exterior,MAE,VoxelFlex-3D,Exterior,Q1,0.0603
+Panel B,Boxplot,Core_Exterior,MAE,VoxelFlex-3D,Exterior,Q3,0.3052
+Panel C,Lineplot+CI,Position_Bin,MAE,DeepFlex,N-term (0.0-0.2),Mean,0.1513
+Panel C,Lineplot+CI,Position_Bin,MAE,DeepFlex,N-term (0.0-0.2),StdDev,0.1691
+Panel C,Lineplot+CI,Position_Bin,MAE,DeepFlex,N-term (0.0-0.2),Count,57260
+Panel C,Lineplot+CI,Position_Bin,MAE,DeepFlex,N-term (0.0-0.2),SEM,0.0007
+Panel C,Lineplot+CI,Position_Bin,MAE,DeepFlex,N-term (0.0-0.2),95CI_Lower,0.1500
+Panel C,Lineplot+CI,Position_Bin,MAE,DeepFlex,N-term (0.0-0.2),95CI_Upper,0.1527
+Panel C,Lineplot+CI,Position_Bin,MAE,DeepFlex,Mid (0.2-0.4),Mean,0.1207
+Panel C,Lineplot+CI,Position_Bin,MAE,DeepFlex,Mid (0.2-0.4),StdDev,0.1378
+Panel C,Lineplot+CI,Position_Bin,MAE,DeepFlex,Mid (0.2-0.4),Count,56690
+Panel C,Lineplot+CI,Position_Bin,MAE,DeepFlex,Mid (0.2-0.4),SEM,0.0006
+Panel C,Lineplot+CI,Position_Bin,MAE,DeepFlex,Mid (0.2-0.4),95CI_Lower,0.1195
+Panel C,Lineplot+CI,Position_Bin,MAE,DeepFlex,Mid (0.2-0.4),95CI_Upper,0.1218
+Panel C,Lineplot+CI,Position_Bin,MAE,DeepFlex,Mid (0.4-0.6),Mean,0.1210
+Panel C,Lineplot+CI,Position_Bin,MAE,DeepFlex,Mid (0.4-0.6),StdDev,0.1397
+Panel C,Lineplot+CI,Position_Bin,MAE,DeepFlex,Mid (0.4-0.6),Count,57110
+Panel C,Lineplot+CI,Position_Bin,MAE,DeepFlex,Mid (0.4-0.6),SEM,0.0006
+Panel C,Lineplot+CI,Position_Bin,MAE,DeepFlex,Mid (0.4-0.6),95CI_Lower,0.1199
+Panel C,Lineplot+CI,Position_Bin,MAE,DeepFlex,Mid (0.4-0.6),95CI_Upper,0.1222
+Panel C,Lineplot+CI,Position_Bin,MAE,DeepFlex,Mid (0.6-0.8),Mean,0.1215
+Panel C,Lineplot+CI,Position_Bin,MAE,DeepFlex,Mid (0.6-0.8),StdDev,0.1344
+Panel C,Lineplot+CI,Position_Bin,MAE,DeepFlex,Mid (0.6-0.8),Count,56285
+Panel C,Lineplot+CI,Position_Bin,MAE,DeepFlex,Mid (0.6-0.8),SEM,0.0006
+Panel C,Lineplot+CI,Position_Bin,MAE,DeepFlex,Mid (0.6-0.8),95CI_Lower,0.1204
+Panel C,Lineplot+CI,Position_Bin,MAE,DeepFlex,Mid (0.6-0.8),95CI_Upper,0.1226
+Panel C,Lineplot+CI,Position_Bin,MAE,DeepFlex,C-term (0.8-1.0),Mean,0.1580
+Panel C,Lineplot+CI,Position_Bin,MAE,DeepFlex,C-term (0.8-1.0),StdDev,0.1725
+Panel C,Lineplot+CI,Position_Bin,MAE,DeepFlex,C-term (0.8-1.0),Count,56145
+Panel C,Lineplot+CI,Position_Bin,MAE,DeepFlex,C-term (0.8-1.0),SEM,0.0007
+Panel C,Lineplot+CI,Position_Bin,MAE,DeepFlex,C-term (0.8-1.0),95CI_Lower,0.1565
+Panel C,Lineplot+CI,Position_Bin,MAE,DeepFlex,C-term (0.8-1.0),95CI_Upper,0.1594
+Panel C,Lineplot+CI,Position_Bin,MAE,ESM-Only,N-term (0.0-0.2),Mean,0.1986
+Panel C,Lineplot+CI,Position_Bin,MAE,ESM-Only,N-term (0.0-0.2),StdDev,0.1810
+Panel C,Lineplot+CI,Position_Bin,MAE,ESM-Only,N-term (0.0-0.2),Count,57418
+Panel C,Lineplot+CI,Position_Bin,MAE,ESM-Only,N-term (0.0-0.2),SEM,0.0008
+Panel C,Lineplot+CI,Position_Bin,MAE,ESM-Only,N-term (0.0-0.2),95CI_Lower,0.1971
+Panel C,Lineplot+CI,Position_Bin,MAE,ESM-Only,N-term (0.0-0.2),95CI_Upper,0.2001
+Panel C,Lineplot+CI,Position_Bin,MAE,ESM-Only,Mid (0.2-0.4),Mean,0.1545
+Panel C,Lineplot+CI,Position_Bin,MAE,ESM-Only,Mid (0.2-0.4),StdDev,0.1404
+Panel C,Lineplot+CI,Position_Bin,MAE,ESM-Only,Mid (0.2-0.4),Count,56850
+Panel C,Lineplot+CI,Position_Bin,MAE,ESM-Only,Mid (0.2-0.4),SEM,0.0006
+Panel C,Lineplot+CI,Position_Bin,MAE,ESM-Only,Mid (0.2-0.4),95CI_Lower,0.1534
+Panel C,Lineplot+CI,Position_Bin,MAE,ESM-Only,Mid (0.2-0.4),95CI_Upper,0.1557
+Panel C,Lineplot+CI,Position_Bin,MAE,ESM-Only,Mid (0.4-0.6),Mean,0.1554
+Panel C,Lineplot+CI,Position_Bin,MAE,ESM-Only,Mid (0.4-0.6),StdDev,0.1423
+Panel C,Lineplot+CI,Position_Bin,MAE,ESM-Only,Mid (0.4-0.6),Count,57260
+Panel C,Lineplot+CI,Position_Bin,MAE,ESM-Only,Mid (0.4-0.6),SEM,0.0006
+Panel C,Lineplot+CI,Position_Bin,MAE,ESM-Only,Mid (0.4-0.6),95CI_Lower,0.1542
+Panel C,Lineplot+CI,Position_Bin,MAE,ESM-Only,Mid (0.4-0.6),95CI_Upper,0.1565
+Panel C,Lineplot+CI,Position_Bin,MAE,ESM-Only,Mid (0.6-0.8),Mean,0.1556
+Panel C,Lineplot+CI,Position_Bin,MAE,ESM-Only,Mid (0.6-0.8),StdDev,0.1389
+Panel C,Lineplot+CI,Position_Bin,MAE,ESM-Only,Mid (0.6-0.8),Count,56435
+Panel C,Lineplot+CI,Position_Bin,MAE,ESM-Only,Mid (0.6-0.8),SEM,0.0006
+Panel C,Lineplot+CI,Position_Bin,MAE,ESM-Only,Mid (0.6-0.8),95CI_Lower,0.1544
+Panel C,Lineplot+CI,Position_Bin,MAE,ESM-Only,Mid (0.6-0.8),95CI_Upper,0.1567
+Panel C,Lineplot+CI,Position_Bin,MAE,ESM-Only,C-term (0.8-1.0),Mean,0.1940
+Panel C,Lineplot+CI,Position_Bin,MAE,ESM-Only,C-term (0.8-1.0),StdDev,0.1817
+Panel C,Lineplot+CI,Position_Bin,MAE,ESM-Only,C-term (0.8-1.0),Count,56304
+Panel C,Lineplot+CI,Position_Bin,MAE,ESM-Only,C-term (0.8-1.0),SEM,0.0008
+Panel C,Lineplot+CI,Position_Bin,MAE,ESM-Only,C-term (0.8-1.0),95CI_Lower,0.1925
+Panel C,Lineplot+CI,Position_Bin,MAE,ESM-Only,C-term (0.8-1.0),95CI_Upper,0.1955
+Panel C,Lineplot+CI,Position_Bin,MAE,VoxelFlex-3D,N-term (0.0-0.2),Mean,0.2233
+Panel C,Lineplot+CI,Position_Bin,MAE,VoxelFlex-3D,N-term (0.0-0.2),StdDev,0.2371
+Panel C,Lineplot+CI,Position_Bin,MAE,VoxelFlex-3D,N-term (0.0-0.2),Count,57340
+Panel C,Lineplot+CI,Position_Bin,MAE,VoxelFlex-3D,N-term (0.0-0.2),SEM,0.0010
+Panel C,Lineplot+CI,Position_Bin,MAE,VoxelFlex-3D,N-term (0.0-0.2),95CI_Lower,0.2214
+Panel C,Lineplot+CI,Position_Bin,MAE,VoxelFlex-3D,N-term (0.0-0.2),95CI_Upper,0.2253
+Panel C,Lineplot+CI,Position_Bin,MAE,VoxelFlex-3D,Mid (0.2-0.4),Mean,0.1731
+Panel C,Lineplot+CI,Position_Bin,MAE,VoxelFlex-3D,Mid (0.2-0.4),StdDev,0.1739
+Panel C,Lineplot+CI,Position_Bin,MAE,VoxelFlex-3D,Mid (0.2-0.4),Count,56770
+Panel C,Lineplot+CI,Position_Bin,MAE,VoxelFlex-3D,Mid (0.2-0.4),SEM,0.0007
+Panel C,Lineplot+CI,Position_Bin,MAE,VoxelFlex-3D,Mid (0.2-0.4),95CI_Lower,0.1717
+Panel C,Lineplot+CI,Position_Bin,MAE,VoxelFlex-3D,Mid (0.2-0.4),95CI_Upper,0.1745
+Panel C,Lineplot+CI,Position_Bin,MAE,VoxelFlex-3D,Mid (0.4-0.6),Mean,0.1694
+Panel C,Lineplot+CI,Position_Bin,MAE,VoxelFlex-3D,Mid (0.4-0.6),StdDev,0.1695
+Panel C,Lineplot+CI,Position_Bin,MAE,VoxelFlex-3D,Mid (0.4-0.6),Count,57185
+Panel C,Lineplot+CI,Position_Bin,MAE,VoxelFlex-3D,Mid (0.4-0.6),SEM,0.0007
+Panel C,Lineplot+CI,Position_Bin,MAE,VoxelFlex-3D,Mid (0.4-0.6),95CI_Lower,0.1680
+Panel C,Lineplot+CI,Position_Bin,MAE,VoxelFlex-3D,Mid (0.4-0.6),95CI_Upper,0.1708
+Panel C,Lineplot+CI,Position_Bin,MAE,VoxelFlex-3D,Mid (0.6-0.8),Mean,0.1674
+Panel C,Lineplot+CI,Position_Bin,MAE,VoxelFlex-3D,Mid (0.6-0.8),StdDev,0.1673
+Panel C,Lineplot+CI,Position_Bin,MAE,VoxelFlex-3D,Mid (0.6-0.8),Count,56355
+Panel C,Lineplot+CI,Position_Bin,MAE,VoxelFlex-3D,Mid (0.6-0.8),SEM,0.0007
+Panel C,Lineplot+CI,Position_Bin,MAE,VoxelFlex-3D,Mid (0.6-0.8),95CI_Lower,0.1660
+Panel C,Lineplot+CI,Position_Bin,MAE,VoxelFlex-3D,Mid (0.6-0.8),95CI_Upper,0.1687
+Panel C,Lineplot+CI,Position_Bin,MAE,VoxelFlex-3D,C-term (0.8-1.0),Mean,0.2179
+Panel C,Lineplot+CI,Position_Bin,MAE,VoxelFlex-3D,C-term (0.8-1.0),StdDev,0.2285
+Panel C,Lineplot+CI,Position_Bin,MAE,VoxelFlex-3D,C-term (0.8-1.0),Count,56225
+Panel C,Lineplot+CI,Position_Bin,MAE,VoxelFlex-3D,C-term (0.8-1.0),SEM,0.0010
+Panel C,Lineplot+CI,Position_Bin,MAE,VoxelFlex-3D,C-term (0.8-1.0),95CI_Lower,0.2160
+Panel C,Lineplot+CI,Position_Bin,MAE,VoxelFlex-3D,C-term (0.8-1.0),95CI_Upper,0.2198
+Panel D,Lineplot,RSA_Quantile_Label,N/A,N/A,N/A,X-axis Sort Order,Default sort
+Panel D,Lineplot,RSA_Quantile_Label,MAE,DeepFlex,1.00-57498.60,Mean,0.1891
+Panel D,Lineplot,RSA_Quantile_Label,MAE,DeepFlex,1.00-57498.60,Count,4635
+Panel D,Lineplot,RSA_Quantile_Label,MAE,ESM-Only,1.00-57498.60,Mean,0.2483
+Panel D,Lineplot,RSA_Quantile_Label,MAE,ESM-Only,1.00-57498.60,Count,4642
+Panel D,Lineplot,RSA_Quantile_Label,MAE,VoxelFlex-3D,1.00-57498.60,Mean,0.2933
+Panel D,Lineplot,RSA_Quantile_Label,MAE,VoxelFlex-3D,1.00-57498.60,Count,4640
+Panel D,Lineplot,RSA_Quantile_Label,MAE,DeepFlex,Unknown,Mean,0.1343
+Panel D,Lineplot,RSA_Quantile_Label,MAE,DeepFlex,Unknown,Count,280870
+Panel D,Lineplot,RSA_Quantile_Label,MAE,ESM-Only,Unknown,Mean,0.1712
+Panel D,Lineplot,RSA_Quantile_Label,MAE,ESM-Only,Unknown,Count,281643
+Panel D,Lineplot,RSA_Quantile_Label,MAE,VoxelFlex-3D,Unknown,Mean,0.1896
+Panel D,Lineplot,RSA_Quantile_Label,MAE,VoxelFlex-3D,Unknown,Count,281250
+Panel E,Scatter+LOWESS,bfactor_norm,MAE,N/A,N/A,Note,LOWESS trend with 95% CI shown
+Panel E,Scatter+LOWESS,bfactor_norm,MAE,DeepFlex,N/A,Points Plotted,285505
+Panel E,Scatter+LOWESS,bfactor_norm,MAE,DeepFlex,Correlation,SpearmanRho,0.0971
+Panel E,Scatter+LOWESS,bfactor_norm,MAE,DeepFlex,Correlation,P-value,0.0000
+Panel E,Scatter+LOWESS,bfactor_norm,MAE,ESM-Only,N/A,Points Plotted,286285
+Panel E,Scatter+LOWESS,bfactor_norm,MAE,ESM-Only,Correlation,SpearmanRho,0.0539
+Panel E,Scatter+LOWESS,bfactor_norm,MAE,ESM-Only,Correlation,P-value,0.0000
+Panel E,Scatter+LOWESS,bfactor_norm,MAE,VoxelFlex-3D,N/A,Points Plotted,285890
+Panel E,Scatter+LOWESS,bfactor_norm,MAE,VoxelFlex-3D,Correlation,SpearmanRho,0.0891
+Panel E,Scatter+LOWESS,bfactor_norm,MAE,VoxelFlex-3D,Correlation,P-value,0.0000
+Panel F,Heatmap,phi,psi,DeepFlex,N/A,Total Points Plotted,285505
+Panel F,Heatmap,phi,psi,DeepFlex,All Bins,Mean MAE (Binned),0.1508
+Panel F,Heatmap,phi,psi,DeepFlex,α-Helix,Mean MAE (Raw Points),0.1284
+Panel F,Heatmap,phi,psi,N/A,α-Helix,Count (Raw Points),102095
+Panel F,Heatmap,phi,psi,DeepFlex,β-Sheet,Mean MAE (Raw Points),0.1172
+Panel F,Heatmap,phi,psi,N/A,β-Sheet,Count (Raw Points),38610
+Panel F,Heatmap,phi,psi,DeepFlex,L-α,Mean MAE (Raw Points),0.1429
+Panel F,Heatmap,phi,psi,N/A,L-α,Count (Raw Points),5390
+Panel G,Barplot+CI,resname,N/A,N/A,N/A,X-axis Sort Order,MET; VAL; ILE; TRP; PHE; LEU; TYR; ALA; GLN; ARG; THR; PRO; GLU; SER; ASP; GLY; LYS; CYS; ASN; HIS
+Panel G,Barplot+CI,resname,N/A,DeepFlex,N/A,Top 3 (Lowest MAE),MET:0.1238; VAL:0.1239; ILE:0.1239
+Panel G,Barplot+CI,resname,N/A,DeepFlex,N/A,Bottom 3 (Highest MAE),HIS:0.1452; ASN:0.1439; CYS:0.1436
+Panel G,Barplot+CI,resname,MAE,DeepFlex,MET,Mean,0.1238
+Panel G,Barplot+CI,resname,MAE,DeepFlex,MET,StdDev,0.1417
+Panel G,Barplot+CI,resname,MAE,DeepFlex,MET,Count,5915.0000
+Panel G,Barplot+CI,resname,MAE,DeepFlex,MET,SEM,0.0018
+Panel G,Barplot+CI,resname,MAE,DeepFlex,MET,95CI_Lower,0.1202
+Panel G,Barplot+CI,resname,MAE,DeepFlex,MET,95CI_Upper,0.1274
+Panel G,Barplot+CI,resname,MAE,ESM-Only,MET,Mean,0.1664
+Panel G,Barplot+CI,resname,MAE,ESM-Only,MET,StdDev,0.1569
+Panel G,Barplot+CI,resname,MAE,ESM-Only,MET,Count,5959.0000
+Panel G,Barplot+CI,resname,MAE,ESM-Only,MET,SEM,0.0020
+Panel G,Barplot+CI,resname,MAE,ESM-Only,MET,95CI_Lower,0.1625
+Panel G,Barplot+CI,resname,MAE,ESM-Only,MET,95CI_Upper,0.1704
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,MET,Mean,0.1759
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,MET,StdDev,0.1876
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,MET,Count,5955.0000
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,MET,SEM,0.0024
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,MET,95CI_Lower,0.1711
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,MET,95CI_Upper,0.1806
+Panel G,Barplot+CI,resname,MAE,DeepFlex,VAL,Mean,0.1239
+Panel G,Barplot+CI,resname,MAE,DeepFlex,VAL,StdDev,0.1496
+Panel G,Barplot+CI,resname,MAE,DeepFlex,VAL,Count,19505.0000
+Panel G,Barplot+CI,resname,MAE,DeepFlex,VAL,SEM,0.0011
+Panel G,Barplot+CI,resname,MAE,DeepFlex,VAL,95CI_Lower,0.1218
+Panel G,Barplot+CI,resname,MAE,DeepFlex,VAL,95CI_Upper,0.1260
+Panel G,Barplot+CI,resname,MAE,ESM-Only,VAL,Mean,0.1615
+Panel G,Barplot+CI,resname,MAE,ESM-Only,VAL,StdDev,0.1566
+Panel G,Barplot+CI,resname,MAE,ESM-Only,VAL,Count,19627.0000
+Panel G,Barplot+CI,resname,MAE,ESM-Only,VAL,SEM,0.0011
+Panel G,Barplot+CI,resname,MAE,ESM-Only,VAL,95CI_Lower,0.1593
+Panel G,Barplot+CI,resname,MAE,ESM-Only,VAL,95CI_Upper,0.1637
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,VAL,Mean,0.1728
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,VAL,StdDev,0.1906
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,VAL,Count,19600.0000
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,VAL,SEM,0.0014
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,VAL,95CI_Lower,0.1701
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,VAL,95CI_Upper,0.1754
+Panel G,Barplot+CI,resname,MAE,DeepFlex,ILE,Mean,0.1239
+Panel G,Barplot+CI,resname,MAE,DeepFlex,ILE,StdDev,0.1458
+Panel G,Barplot+CI,resname,MAE,DeepFlex,ILE,Count,15490.0000
+Panel G,Barplot+CI,resname,MAE,DeepFlex,ILE,SEM,0.0012
+Panel G,Barplot+CI,resname,MAE,DeepFlex,ILE,95CI_Lower,0.1216
+Panel G,Barplot+CI,resname,MAE,DeepFlex,ILE,95CI_Upper,0.1262
+Panel G,Barplot+CI,resname,MAE,ESM-Only,ILE,Mean,0.1623
+Panel G,Barplot+CI,resname,MAE,ESM-Only,ILE,StdDev,0.1555
+Panel G,Barplot+CI,resname,MAE,ESM-Only,ILE,Count,15519.0000
+Panel G,Barplot+CI,resname,MAE,ESM-Only,ILE,SEM,0.0012
+Panel G,Barplot+CI,resname,MAE,ESM-Only,ILE,95CI_Lower,0.1598
+Panel G,Barplot+CI,resname,MAE,ESM-Only,ILE,95CI_Upper,0.1647
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,ILE,Mean,0.1719
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,ILE,StdDev,0.1892
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,ILE,Count,15500.0000
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,ILE,SEM,0.0015
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,ILE,95CI_Lower,0.1689
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,ILE,95CI_Upper,0.1749
+Panel G,Barplot+CI,resname,MAE,DeepFlex,TRP,Mean,0.1257
+Panel G,Barplot+CI,resname,MAE,DeepFlex,TRP,StdDev,0.1488
+Panel G,Barplot+CI,resname,MAE,DeepFlex,TRP,Count,4035.0000
+Panel G,Barplot+CI,resname,MAE,DeepFlex,TRP,SEM,0.0023
+Panel G,Barplot+CI,resname,MAE,DeepFlex,TRP,95CI_Lower,0.1211
+Panel G,Barplot+CI,resname,MAE,DeepFlex,TRP,95CI_Upper,0.1303
+Panel G,Barplot+CI,resname,MAE,ESM-Only,TRP,Mean,0.1666
+Panel G,Barplot+CI,resname,MAE,ESM-Only,TRP,StdDev,0.1570
+Panel G,Barplot+CI,resname,MAE,ESM-Only,TRP,Count,4030.0000
+Panel G,Barplot+CI,resname,MAE,ESM-Only,TRP,SEM,0.0025
+Panel G,Barplot+CI,resname,MAE,ESM-Only,TRP,95CI_Lower,0.1618
+Panel G,Barplot+CI,resname,MAE,ESM-Only,TRP,95CI_Upper,0.1715
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,TRP,Mean,0.1810
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,TRP,StdDev,0.1947
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,TRP,Count,4020.0000
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,TRP,SEM,0.0031
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,TRP,95CI_Lower,0.1750
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,TRP,95CI_Upper,0.1870
+Panel G,Barplot+CI,resname,MAE,DeepFlex,PHE,Mean,0.1257
+Panel G,Barplot+CI,resname,MAE,DeepFlex,PHE,StdDev,0.1496
+Panel G,Barplot+CI,resname,MAE,DeepFlex,PHE,Count,11950.0000
+Panel G,Barplot+CI,resname,MAE,DeepFlex,PHE,SEM,0.0014
+Panel G,Barplot+CI,resname,MAE,DeepFlex,PHE,95CI_Lower,0.1230
+Panel G,Barplot+CI,resname,MAE,DeepFlex,PHE,95CI_Upper,0.1284
+Panel G,Barplot+CI,resname,MAE,ESM-Only,PHE,Mean,0.1633
+Panel G,Barplot+CI,resname,MAE,ESM-Only,PHE,StdDev,0.1544
+Panel G,Barplot+CI,resname,MAE,ESM-Only,PHE,Count,11968.0000
+Panel G,Barplot+CI,resname,MAE,ESM-Only,PHE,SEM,0.0014
+Panel G,Barplot+CI,resname,MAE,ESM-Only,PHE,95CI_Lower,0.1606
+Panel G,Barplot+CI,resname,MAE,ESM-Only,PHE,95CI_Upper,0.1661
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,PHE,Mean,0.1745
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,PHE,StdDev,0.1883
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,PHE,Count,11955.0000
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,PHE,SEM,0.0017
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,PHE,95CI_Lower,0.1711
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,PHE,95CI_Upper,0.1779
+Panel G,Barplot+CI,resname,MAE,DeepFlex,LEU,Mean,0.1258
+Panel G,Barplot+CI,resname,MAE,DeepFlex,LEU,StdDev,0.1482
+Panel G,Barplot+CI,resname,MAE,DeepFlex,LEU,Count,27250.0000
+Panel G,Barplot+CI,resname,MAE,DeepFlex,LEU,SEM,0.0009
+Panel G,Barplot+CI,resname,MAE,DeepFlex,LEU,95CI_Lower,0.1240
+Panel G,Barplot+CI,resname,MAE,DeepFlex,LEU,95CI_Upper,0.1275
+Panel G,Barplot+CI,resname,MAE,ESM-Only,LEU,Mean,0.1617
+Panel G,Barplot+CI,resname,MAE,ESM-Only,LEU,StdDev,0.1536
+Panel G,Barplot+CI,resname,MAE,ESM-Only,LEU,Count,27384.0000
+Panel G,Barplot+CI,resname,MAE,ESM-Only,LEU,SEM,0.0009
+Panel G,Barplot+CI,resname,MAE,ESM-Only,LEU,95CI_Lower,0.1599
+Panel G,Barplot+CI,resname,MAE,ESM-Only,LEU,95CI_Upper,0.1635
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,LEU,Mean,0.1756
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,LEU,StdDev,0.1901
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,LEU,Count,27350.0000
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,LEU,SEM,0.0011
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,LEU,95CI_Lower,0.1733
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,LEU,95CI_Upper,0.1779
+Panel G,Barplot+CI,resname,MAE,DeepFlex,TYR,Mean,0.1284
+Panel G,Barplot+CI,resname,MAE,DeepFlex,TYR,StdDev,0.1497
+Panel G,Barplot+CI,resname,MAE,DeepFlex,TYR,Count,9745.0000
+Panel G,Barplot+CI,resname,MAE,DeepFlex,TYR,SEM,0.0015
+Panel G,Barplot+CI,resname,MAE,DeepFlex,TYR,95CI_Lower,0.1254
+Panel G,Barplot+CI,resname,MAE,DeepFlex,TYR,95CI_Upper,0.1314
+Panel G,Barplot+CI,resname,MAE,ESM-Only,TYR,Mean,0.1664
+Panel G,Barplot+CI,resname,MAE,ESM-Only,TYR,StdDev,0.1578
+Panel G,Barplot+CI,resname,MAE,ESM-Only,TYR,Count,9760.0000
+Panel G,Barplot+CI,resname,MAE,ESM-Only,TYR,SEM,0.0016
+Panel G,Barplot+CI,resname,MAE,ESM-Only,TYR,95CI_Lower,0.1633
+Panel G,Barplot+CI,resname,MAE,ESM-Only,TYR,95CI_Upper,0.1696
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,TYR,Mean,0.1750
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,TYR,StdDev,0.1912
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,TYR,Count,9740.0000
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,TYR,SEM,0.0019
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,TYR,95CI_Lower,0.1712
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,TYR,95CI_Upper,0.1788
+Panel G,Barplot+CI,resname,MAE,DeepFlex,ALA,Mean,0.1318
+Panel G,Barplot+CI,resname,MAE,DeepFlex,ALA,StdDev,0.1495
+Panel G,Barplot+CI,resname,MAE,DeepFlex,ALA,Count,22735.0000
+Panel G,Barplot+CI,resname,MAE,DeepFlex,ALA,SEM,0.0010
+Panel G,Barplot+CI,resname,MAE,DeepFlex,ALA,95CI_Lower,0.1299
+Panel G,Barplot+CI,resname,MAE,DeepFlex,ALA,95CI_Upper,0.1338
+Panel G,Barplot+CI,resname,MAE,ESM-Only,ALA,Mean,0.1673
+Panel G,Barplot+CI,resname,MAE,ESM-Only,ALA,StdDev,0.1555
+Panel G,Barplot+CI,resname,MAE,ESM-Only,ALA,Count,22766.0000
+Panel G,Barplot+CI,resname,MAE,ESM-Only,ALA,SEM,0.0010
+Panel G,Barplot+CI,resname,MAE,ESM-Only,ALA,95CI_Lower,0.1653
+Panel G,Barplot+CI,resname,MAE,ESM-Only,ALA,95CI_Upper,0.1694
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,ALA,Mean,0.1882
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,ALA,StdDev,0.1970
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,ALA,Count,22740.0000
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,ALA,SEM,0.0013
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,ALA,95CI_Lower,0.1856
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,ALA,95CI_Upper,0.1907
+Panel G,Barplot+CI,resname,MAE,DeepFlex,GLN,Mean,0.1358
+Panel G,Barplot+CI,resname,MAE,DeepFlex,GLN,StdDev,0.1490
+Panel G,Barplot+CI,resname,MAE,DeepFlex,GLN,Count,10845.0000
+Panel G,Barplot+CI,resname,MAE,DeepFlex,GLN,SEM,0.0014
+Panel G,Barplot+CI,resname,MAE,DeepFlex,GLN,95CI_Lower,0.1330
+Panel G,Barplot+CI,resname,MAE,DeepFlex,GLN,95CI_Upper,0.1386
+Panel G,Barplot+CI,resname,MAE,ESM-Only,GLN,Mean,0.1774
+Panel G,Barplot+CI,resname,MAE,ESM-Only,GLN,StdDev,0.1629
+Panel G,Barplot+CI,resname,MAE,ESM-Only,GLN,Count,10941.0000
+Panel G,Barplot+CI,resname,MAE,ESM-Only,GLN,SEM,0.0016
+Panel G,Barplot+CI,resname,MAE,ESM-Only,GLN,95CI_Lower,0.1744
+Panel G,Barplot+CI,resname,MAE,ESM-Only,GLN,95CI_Upper,0.1805
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,GLN,Mean,0.2007
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,GLN,StdDev,0.2024
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,GLN,Count,10930.0000
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,GLN,SEM,0.0019
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,GLN,95CI_Lower,0.1969
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,GLN,95CI_Upper,0.2045
+Panel G,Barplot+CI,resname,MAE,DeepFlex,ARG,Mean,0.1368
+Panel G,Barplot+CI,resname,MAE,DeepFlex,ARG,StdDev,0.1535
+Panel G,Barplot+CI,resname,MAE,DeepFlex,ARG,Count,14975.0000
+Panel G,Barplot+CI,resname,MAE,DeepFlex,ARG,SEM,0.0013
+Panel G,Barplot+CI,resname,MAE,DeepFlex,ARG,95CI_Lower,0.1343
+Panel G,Barplot+CI,resname,MAE,DeepFlex,ARG,95CI_Upper,0.1392
+Panel G,Barplot+CI,resname,MAE,ESM-Only,ARG,Mean,0.1742
+Panel G,Barplot+CI,resname,MAE,ESM-Only,ARG,StdDev,0.1602
+Panel G,Barplot+CI,resname,MAE,ESM-Only,ARG,Count,15026.0000
+Panel G,Barplot+CI,resname,MAE,ESM-Only,ARG,SEM,0.0013
+Panel G,Barplot+CI,resname,MAE,ESM-Only,ARG,95CI_Lower,0.1716
+Panel G,Barplot+CI,resname,MAE,ESM-Only,ARG,95CI_Upper,0.1768
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,ARG,Mean,0.1940
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,ARG,StdDev,0.1988
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,ARG,Count,15005.0000
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,ARG,SEM,0.0016
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,ARG,95CI_Lower,0.1908
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,ARG,95CI_Upper,0.1972
+Panel G,Barplot+CI,resname,MAE,DeepFlex,THR,Mean,0.1378
+Panel G,Barplot+CI,resname,MAE,DeepFlex,THR,StdDev,0.1564
+Panel G,Barplot+CI,resname,MAE,DeepFlex,THR,Count,15630.0000
+Panel G,Barplot+CI,resname,MAE,DeepFlex,THR,SEM,0.0013
+Panel G,Barplot+CI,resname,MAE,DeepFlex,THR,95CI_Lower,0.1353
+Panel G,Barplot+CI,resname,MAE,DeepFlex,THR,95CI_Upper,0.1402
+Panel G,Barplot+CI,resname,MAE,ESM-Only,THR,Mean,0.1768
+Panel G,Barplot+CI,resname,MAE,ESM-Only,THR,StdDev,0.1629
+Panel G,Barplot+CI,resname,MAE,ESM-Only,THR,Count,15652.0000
+Panel G,Barplot+CI,resname,MAE,ESM-Only,THR,SEM,0.0013
+Panel G,Barplot+CI,resname,MAE,ESM-Only,THR,95CI_Lower,0.1742
+Panel G,Barplot+CI,resname,MAE,ESM-Only,THR,95CI_Upper,0.1793
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,THR,Mean,0.1942
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,THR,StdDev,0.2045
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,THR,Count,15630.0000
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,THR,SEM,0.0016
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,THR,95CI_Lower,0.1910
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,THR,95CI_Upper,0.1974
+Panel G,Barplot+CI,resname,MAE,DeepFlex,PRO,Mean,0.1406
+Panel G,Barplot+CI,resname,MAE,DeepFlex,PRO,StdDev,0.1504
+Panel G,Barplot+CI,resname,MAE,DeepFlex,PRO,Count,12980.0000
+Panel G,Barplot+CI,resname,MAE,DeepFlex,PRO,SEM,0.0013
+Panel G,Barplot+CI,resname,MAE,DeepFlex,PRO,95CI_Lower,0.1380
+Panel G,Barplot+CI,resname,MAE,DeepFlex,PRO,95CI_Upper,0.1432
+Panel G,Barplot+CI,resname,MAE,ESM-Only,PRO,Mean,0.1751
+Panel G,Barplot+CI,resname,MAE,ESM-Only,PRO,StdDev,0.1578
+Panel G,Barplot+CI,resname,MAE,ESM-Only,PRO,Count,13015.0000
+Panel G,Barplot+CI,resname,MAE,ESM-Only,PRO,SEM,0.0014
+Panel G,Barplot+CI,resname,MAE,ESM-Only,PRO,95CI_Lower,0.1724
+Panel G,Barplot+CI,resname,MAE,ESM-Only,PRO,95CI_Upper,0.1779
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,PRO,Mean,0.2013
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,PRO,StdDev,0.1989
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,PRO,Count,12990.0000
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,PRO,SEM,0.0017
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,PRO,95CI_Lower,0.1979
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,PRO,95CI_Upper,0.2047
+Panel G,Barplot+CI,resname,MAE,DeepFlex,GLU,Mean,0.1411
+Panel G,Barplot+CI,resname,MAE,DeepFlex,GLU,StdDev,0.1559
+Panel G,Barplot+CI,resname,MAE,DeepFlex,GLU,Count,20020.0000
+Panel G,Barplot+CI,resname,MAE,DeepFlex,GLU,SEM,0.0011
+Panel G,Barplot+CI,resname,MAE,DeepFlex,GLU,95CI_Lower,0.1390
+Panel G,Barplot+CI,resname,MAE,DeepFlex,GLU,95CI_Upper,0.1433
+Panel G,Barplot+CI,resname,MAE,ESM-Only,GLU,Mean,0.1792
+Panel G,Barplot+CI,resname,MAE,ESM-Only,GLU,StdDev,0.1666
+Panel G,Barplot+CI,resname,MAE,ESM-Only,GLU,Count,20123.0000
+Panel G,Barplot+CI,resname,MAE,ESM-Only,GLU,SEM,0.0012
+Panel G,Barplot+CI,resname,MAE,ESM-Only,GLU,95CI_Lower,0.1769
+Panel G,Barplot+CI,resname,MAE,ESM-Only,GLU,95CI_Upper,0.1815
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,GLU,Mean,0.2044
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,GLU,StdDev,0.2033
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,GLU,Count,20105.0000
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,GLU,SEM,0.0014
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,GLU,95CI_Lower,0.2015
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,GLU,95CI_Upper,0.2072
+Panel G,Barplot+CI,resname,MAE,DeepFlex,SER,Mean,0.1424
+Panel G,Barplot+CI,resname,MAE,DeepFlex,SER,StdDev,0.1596
+Panel G,Barplot+CI,resname,MAE,DeepFlex,SER,Count,17585.0000
+Panel G,Barplot+CI,resname,MAE,DeepFlex,SER,SEM,0.0012
+Panel G,Barplot+CI,resname,MAE,DeepFlex,SER,95CI_Lower,0.1400
+Panel G,Barplot+CI,resname,MAE,DeepFlex,SER,95CI_Upper,0.1447
+Panel G,Barplot+CI,resname,MAE,ESM-Only,SER,Mean,0.1822
+Panel G,Barplot+CI,resname,MAE,ESM-Only,SER,StdDev,0.1665
+Panel G,Barplot+CI,resname,MAE,ESM-Only,SER,Count,17602.0000
+Panel G,Barplot+CI,resname,MAE,ESM-Only,SER,SEM,0.0013
+Panel G,Barplot+CI,resname,MAE,ESM-Only,SER,95CI_Lower,0.1798
+Panel G,Barplot+CI,resname,MAE,ESM-Only,SER,95CI_Upper,0.1847
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,SER,Mean,0.2050
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,SER,StdDev,0.2134
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,SER,Count,17575.0000
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,SER,SEM,0.0016
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,SER,95CI_Lower,0.2018
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,SER,95CI_Upper,0.2081
+Panel G,Barplot+CI,resname,MAE,DeepFlex,ASP,Mean,0.1426
+Panel G,Barplot+CI,resname,MAE,DeepFlex,ASP,StdDev,0.1552
+Panel G,Barplot+CI,resname,MAE,DeepFlex,ASP,Count,16860.0000
+Panel G,Barplot+CI,resname,MAE,DeepFlex,ASP,SEM,0.0012
+Panel G,Barplot+CI,resname,MAE,DeepFlex,ASP,95CI_Lower,0.1402
+Panel G,Barplot+CI,resname,MAE,DeepFlex,ASP,95CI_Upper,0.1449
+Panel G,Barplot+CI,resname,MAE,ESM-Only,ASP,Mean,0.1782
+Panel G,Barplot+CI,resname,MAE,ESM-Only,ASP,StdDev,0.1636
+Panel G,Barplot+CI,resname,MAE,ESM-Only,ASP,Count,16921.0000
+Panel G,Barplot+CI,resname,MAE,ESM-Only,ASP,SEM,0.0013
+Panel G,Barplot+CI,resname,MAE,ESM-Only,ASP,95CI_Lower,0.1757
+Panel G,Barplot+CI,resname,MAE,ESM-Only,ASP,95CI_Upper,0.1807
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,ASP,Mean,0.2025
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,ASP,StdDev,0.2029
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,ASP,Count,16905.0000
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,ASP,SEM,0.0016
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,ASP,95CI_Lower,0.1994
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,ASP,95CI_Upper,0.2056
+Panel G,Barplot+CI,resname,MAE,DeepFlex,GLY,Mean,0.1431
+Panel G,Barplot+CI,resname,MAE,DeepFlex,GLY,StdDev,0.1590
+Panel G,Barplot+CI,resname,MAE,DeepFlex,GLY,Count,19860.0000
+Panel G,Barplot+CI,resname,MAE,DeepFlex,GLY,SEM,0.0011
+Panel G,Barplot+CI,resname,MAE,DeepFlex,GLY,95CI_Lower,0.1409
+Panel G,Barplot+CI,resname,MAE,DeepFlex,GLY,95CI_Upper,0.1453
+Panel G,Barplot+CI,resname,MAE,ESM-Only,GLY,Mean,0.1797
+Panel G,Barplot+CI,resname,MAE,ESM-Only,GLY,StdDev,0.1610
+Panel G,Barplot+CI,resname,MAE,ESM-Only,GLY,Count,19846.0000
+Panel G,Barplot+CI,resname,MAE,ESM-Only,GLY,SEM,0.0011
+Panel G,Barplot+CI,resname,MAE,ESM-Only,GLY,95CI_Lower,0.1775
+Panel G,Barplot+CI,resname,MAE,ESM-Only,GLY,95CI_Upper,0.1819
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,GLY,Mean,0.2039
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,GLY,StdDev,0.2126
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,GLY,Count,19805.0000
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,GLY,SEM,0.0015
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,GLY,95CI_Lower,0.2009
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,GLY,95CI_Upper,0.2068
+Panel G,Barplot+CI,resname,MAE,DeepFlex,LYS,Mean,0.1434
+Panel G,Barplot+CI,resname,MAE,DeepFlex,LYS,StdDev,0.1569
+Panel G,Barplot+CI,resname,MAE,DeepFlex,LYS,Count,16710.0000
+Panel G,Barplot+CI,resname,MAE,DeepFlex,LYS,SEM,0.0012
+Panel G,Barplot+CI,resname,MAE,DeepFlex,LYS,95CI_Lower,0.1410
+Panel G,Barplot+CI,resname,MAE,DeepFlex,LYS,95CI_Upper,0.1458
+Panel G,Barplot+CI,resname,MAE,ESM-Only,LYS,Mean,0.1820
+Panel G,Barplot+CI,resname,MAE,ESM-Only,LYS,StdDev,0.1676
+Panel G,Barplot+CI,resname,MAE,ESM-Only,LYS,Count,16740.0000
+Panel G,Barplot+CI,resname,MAE,ESM-Only,LYS,SEM,0.0013
+Panel G,Barplot+CI,resname,MAE,ESM-Only,LYS,95CI_Lower,0.1794
+Panel G,Barplot+CI,resname,MAE,ESM-Only,LYS,95CI_Upper,0.1845
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,LYS,Mean,0.2057
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,LYS,StdDev,0.2114
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,LYS,Count,16720.0000
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,LYS,SEM,0.0016
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,LYS,95CI_Lower,0.2025
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,LYS,95CI_Upper,0.2089
+Panel G,Barplot+CI,resname,MAE,DeepFlex,CYS,Mean,0.1436
+Panel G,Barplot+CI,resname,MAE,DeepFlex,CYS,StdDev,0.1658
+Panel G,Barplot+CI,resname,MAE,DeepFlex,CYS,Count,4185.0000
+Panel G,Barplot+CI,resname,MAE,DeepFlex,CYS,SEM,0.0026
+Panel G,Barplot+CI,resname,MAE,DeepFlex,CYS,95CI_Lower,0.1386
+Panel G,Barplot+CI,resname,MAE,DeepFlex,CYS,95CI_Upper,0.1486
+Panel G,Barplot+CI,resname,MAE,ESM-Only,CYS,Mean,0.1622
+Panel G,Barplot+CI,resname,MAE,ESM-Only,CYS,StdDev,0.1483
+Panel G,Barplot+CI,resname,MAE,ESM-Only,CYS,Count,4161.0000
+Panel G,Barplot+CI,resname,MAE,ESM-Only,CYS,SEM,0.0023
+Panel G,Barplot+CI,resname,MAE,ESM-Only,CYS,95CI_Lower,0.1577
+Panel G,Barplot+CI,resname,MAE,ESM-Only,CYS,95CI_Upper,0.1667
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,CYS,Mean,0.1778
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,CYS,StdDev,0.1854
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,CYS,Count,4150.0000
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,CYS,SEM,0.0029
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,CYS,95CI_Lower,0.1721
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,CYS,95CI_Upper,0.1834
+Panel G,Barplot+CI,resname,MAE,DeepFlex,ASN,Mean,0.1439
+Panel G,Barplot+CI,resname,MAE,DeepFlex,ASN,StdDev,0.1573
+Panel G,Barplot+CI,resname,MAE,DeepFlex,ASN,Count,12280.0000
+Panel G,Barplot+CI,resname,MAE,DeepFlex,ASN,SEM,0.0014
+Panel G,Barplot+CI,resname,MAE,DeepFlex,ASN,95CI_Lower,0.1411
+Panel G,Barplot+CI,resname,MAE,DeepFlex,ASN,95CI_Upper,0.1467
+Panel G,Barplot+CI,resname,MAE,ESM-Only,ASN,Mean,0.1827
+Panel G,Barplot+CI,resname,MAE,ESM-Only,ASN,StdDev,0.1678
+Panel G,Barplot+CI,resname,MAE,ESM-Only,ASN,Count,12288.0000
+Panel G,Barplot+CI,resname,MAE,ESM-Only,ASN,SEM,0.0015
+Panel G,Barplot+CI,resname,MAE,ESM-Only,ASN,95CI_Lower,0.1797
+Panel G,Barplot+CI,resname,MAE,ESM-Only,ASN,95CI_Upper,0.1856
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,ASN,Mean,0.2020
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,ASN,StdDev,0.2066
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,ASN,Count,12270.0000
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,ASN,SEM,0.0019
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,ASN,95CI_Lower,0.1984
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,ASN,95CI_Upper,0.2057
+Panel G,Barplot+CI,resname,MAE,DeepFlex,HIS,Mean,0.1452
+Panel G,Barplot+CI,resname,MAE,DeepFlex,HIS,StdDev,0.1627
+Panel G,Barplot+CI,resname,MAE,DeepFlex,HIS,Count,6950.0000
+Panel G,Barplot+CI,resname,MAE,DeepFlex,HIS,SEM,0.0020
+Panel G,Barplot+CI,resname,MAE,DeepFlex,HIS,95CI_Lower,0.1414
+Panel G,Barplot+CI,resname,MAE,DeepFlex,HIS,95CI_Upper,0.1490
+Panel G,Barplot+CI,resname,MAE,ESM-Only,HIS,Mean,0.1789
+Panel G,Barplot+CI,resname,MAE,ESM-Only,HIS,StdDev,0.1609
+Panel G,Barplot+CI,resname,MAE,ESM-Only,HIS,Count,6957.0000
+Panel G,Barplot+CI,resname,MAE,ESM-Only,HIS,SEM,0.0019
+Panel G,Barplot+CI,resname,MAE,ESM-Only,HIS,95CI_Lower,0.1751
+Panel G,Barplot+CI,resname,MAE,ESM-Only,HIS,95CI_Upper,0.1827
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,HIS,Mean,0.2011
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,HIS,StdDev,0.2036
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,HIS,Count,6945.0000
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,HIS,SEM,0.0024
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,HIS,95CI_Lower,0.1963
+Panel G,Barplot+CI,resname,MAE,VoxelFlex-3D,HIS,95CI_Upper,0.2059

@@ -50,7 +50,14 @@ MODEL_CONFIG = {
         "key": "No_ESM_RF",
         "pred_col": "No_ESM_RF_prediction",
         "unc_col": None
+    },
+       # --- ADD THIS NEW ENTRY ---
+    "DeepFlex (Single Temp Models)": {   # Name for the report sections
+        "key": "DeepFlex_Temp",          # Unique key for internal use
+        "pred_col": "temperature_DeepFlex_RMSF", # <-- Name of the column you just added
+        "unc_col": None                  # Set to None as there's no corresponding uncertainty column
     }
+    # --- END OF NEW ENTRY ---
 }
 # Key baselines for significance testing against DeepFlex
 KEY_BASELINES_FOR_SIG_TEST = ["RF (All Features)", "ESM-Only (Seq+Temp)"]
@@ -1429,7 +1436,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run comprehensive analysis on the aggregated flexibility prediction dataset.")
     parser.add_argument(
         "--input_csv", type=str,
-        default="/home/s_felix/FINAL_PROJECT/Data_Analysis/data/01_final_analysis_dataset.csv",
+        default="/home/s_felix/FINAL_PROJECT/Data_Analysis/data/02_final_analysis_dataset.csv",
         help="Path to the aggregated input CSV file."
     )
     parser.add_argument(

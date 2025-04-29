@@ -1,32 +1,38 @@
-[2025-04-16 23:01:11 INFO] Logging initialized. Log file: /home/s_felix/FINAL_PROJECT/Data_Analysis/visualizations/figure4_outputs/figure4_generation.log
-[2025-04-16 23:01:11 INFO] Output directory: /home/s_felix/FINAL_PROJECT/Data_Analysis/visualizations/figure4_outputs
-[2025-04-16 23:01:11 INFO] Loading data from: /home/s_felix/FINAL_PROJECT/Data_Analysis/data/01_final_analysis_dataset.csv
-[2025-04-16 23:01:12 INFO] Loaded 287,865 rows.
-[2025-04-16 23:01:12 INFO] Converting column types...
-[2025-04-16 23:01:12 INFO] Calculating MAE...
-[2025-04-16 23:01:12 INFO] Dropped 3,865 rows due to NaN MAE values.
-[2025-04-16 23:01:12 INFO] 284,000 rows remaining after dropping NaN MAE values.
-[2025-04-16 23:01:12 INFO] Mapping categorical features...
-[2025-04-16 23:01:12 INFO] Binning continuous features...
-[2025-04-16 23:01:12 INFO] Clipping 'normalized_resid' to [0, 1] range before binning.
-[2025-04-16 23:01:12 WARNING] 2005 NULL values in 'Position_Bin' AFTER cutting. Adding 'Unknown'.
-[2025-04-16 23:01:12 INFO] Successfully created string labels for RSA_Quantile_Label.
-[2025-04-16 23:01:12 INFO] Successfully created string labels for BFactor_Quantile_Label.
-[2025-04-16 23:01:12 INFO] Data preparation finished.
-[2025-04-16 23:01:12 INFO] Generating Panel A: Secondary Structure...
-[2025-04-16 23:01:13 INFO] Panel A: Setting Y-axis limits for focus: [0.000, 0.816]
-[2025-04-16 23:01:13 INFO] Saved plot to /home/s_felix/FINAL_PROJECT/Data_Analysis/visualizations/figure4_outputs/figure4_a_ss.png
-[2025-04-16 23:01:13 INFO] Generating Panel B: Core/Exterior (Box Plot)...
-[2025-04-16 23:01:14 INFO] Panel B: Setting Y-axis limits for focus: [0.000, 0.816]
-[2025-04-16 23:01:14 INFO] Saved plot to /home/s_felix/FINAL_PROJECT/Data_Analysis/visualizations/figure4_outputs/figure4_b_core_exterior.png
-[2025-04-16 23:01:14 INFO] Generating Panel D: Relative Accessibility...
-[2025-04-16 23:01:15 INFO] Sorted RSA quantiles numerically.
-[2025-04-16 23:01:16 INFO] Saved plot to /home/s_felix/FINAL_PROJECT/Data_Analysis/visualizations/figure4_outputs/figure4_d_accessibility.png
-[2025-04-16 23:01:16 INFO] Generating Panel F: Ramachandran (Mean MAE)...
-[2025-04-16 23:01:16 INFO] Saved plot to /home/s_felix/FINAL_PROJECT/Data_Analysis/visualizations/figure4_outputs/figure4_f_ramachandran.png
-[2025-04-16 23:01:16 INFO] Generating Panel G: Amino Acid Performance...
-[2025-04-16 23:01:17 INFO] Confirmed: Amino acids ordered by DeepFlex Mean MAE.
-[2025-04-16 23:01:20 INFO] Saved plot to /home/s_felix/FINAL_PROJECT/Data_Analysis/visualizations/figure4_outputs/figure4_g_amino_acid_grouped.png
-[2025-04-16 23:01:20 INFO] Generating Analysis Summary CSV: /home/s_felix/FINAL_PROJECT/Data_Analysis/visualizations/figure4_outputs/figure4_analysis.csv
-[2025-04-16 23:01:20 INFO] Successfully wrote analysis summary CSV.
-[2025-04-16 23:01:20 INFO] --- Figure 4 Generation Script Finished ---
+[2025-04-19 12:26:21 INFO] Logging initialized. Log file: /home/s_felix/FINAL_PROJECT/Data_Analysis/visualizations/figure4_outputs/figure4_generation.log
+[2025-04-19 12:26:21 INFO] Output directory: /home/s_felix/FINAL_PROJECT/Data_Analysis/visualizations/figure4_outputs
+[2025-04-19 12:26:21 INFO] Loading data from: /home/s_felix/FINAL_PROJECT/Data_Analysis/data/01_final_analysis_dataset.csv
+[2025-04-19 12:26:21 INFO] Loaded 287,865 rows.
+[2025-04-19 12:26:21 INFO] Converting column types...
+[2025-04-19 12:26:21 INFO] Calculating MAE...
+[2025-04-19 12:26:21 INFO] Dropped 3,865 rows due to NaN MAE values.
+[2025-04-19 12:26:21 INFO] 284,000 rows remaining after dropping NaN MAE values.
+[2025-04-19 12:26:21 INFO] Mapping categorical features...
+[2025-04-19 12:26:22 INFO] Binning continuous features...
+[2025-04-19 12:26:22 INFO] Clipping 'normalized_resid' to [0, 1] range before binning.
+[2025-04-19 12:26:22 WARNING] 2005 NULL values in 'Position_Bin' AFTER cutting. Adding 'Unknown'.
+[2025-04-19 12:26:22 INFO] Successfully created string labels for RSA_Quantile_Label.
+[2025-04-19 12:26:22 INFO] Successfully created string labels for BFactor_Quantile_Label.
+[2025-04-19 12:26:22 INFO] Data preparation finished.
+[2025-04-19 12:26:22 INFO] Generating Panel A: Secondary Structure (Box Plot)...
+[2025-04-19 12:26:23 INFO] Panel A: Setting Y-axis limits for focus: [0.000, 0.816]
+[2025-04-19 12:26:23 INFO] Saved plot to /home/s_felix/FINAL_PROJECT/Data_Analysis/visualizations/figure4_outputs/figure4_a_ss.png
+[2025-04-19 12:26:23 INFO] Generating Panel B: Core/Exterior (Box Plot)...
+[2025-04-19 12:26:24 INFO] Panel B: Setting Y-axis limits for focus: [0.000, 0.816]
+[2025-04-19 12:26:24 INFO] Saved plot to /home/s_felix/FINAL_PROJECT/Data_Analysis/visualizations/figure4_outputs/figure4_b_core_exterior.png
+[2025-04-19 12:26:24 INFO] Generating Panel C: Sequence Position (Mean ± 95% CI, Outlined Lines, Grey BG, White Grid)...
+[2025-04-19 12:26:24 WARNING] Panel C: Filtered out 2005 rows with unexpected Position_Bin values.
+[2025-04-19 12:26:24 INFO] Saved plot to /home/s_felix/FINAL_PROJECT/Data_Analysis/visualizations/figure4_outputs/figure4_c_position.png
+[2025-04-19 12:26:24 INFO] Generating Panel D: Relative Accessibility (Line Plot by Quantile)...
+[2025-04-19 12:26:24 INFO] Sorted RSA quantiles numerically for plotting.
+[2025-04-19 12:26:24 INFO] Saved plot to /home/s_felix/FINAL_PROJECT/Data_Analysis/visualizations/figure4_outputs/figure4_d_accessibility.png
+[2025-04-19 12:26:24 INFO] Generating Panel E: B-factor Performance (Box Plot by Quantile)...
+[2025-04-19 12:26:25 WARNING] Could not numerically sort B-Factor Quantile Labels (could not convert string to float: ''). Using default order.
+[2025-04-19 12:26:26 INFO] Saved plot to /home/s_felix/FINAL_PROJECT/Data_Analysis/visualizations/figure4_outputs/figure4_e_bfactor.png
+[2025-04-19 12:26:26 INFO] Generating Panel F: Ramachandran (Mean MAE)...
+[2025-04-19 12:26:26 INFO] Saved plot to /home/s_felix/FINAL_PROJECT/Data_Analysis/visualizations/figure4_outputs/figure4_f_ramachandran.png
+[2025-04-19 12:26:26 INFO] Generating Panel G: Amino Acid Performance (Bar Plot - Mean ± 95% CI, Sorted by DeepFlex, Legend Left)...
+[2025-04-19 12:26:27 INFO] Confirmed: Amino acids ordered by DeepFlex Mean MAE (Lowest first).
+[2025-04-19 12:26:30 INFO] Saved plot to /home/s_felix/FINAL_PROJECT/Data_Analysis/visualizations/figure4_outputs/figure4_g_amino_acid_grouped.png
+[2025-04-19 12:26:30 INFO] Generating Analysis Summary CSV: /home/s_felix/FINAL_PROJECT/Data_Analysis/visualizations/figure4_outputs/figure4_analysis.csv
+[2025-04-19 12:26:30 INFO] Successfully wrote analysis summary CSV.
+[2025-04-19 12:26:30 INFO] --- Figure 4 Generation Script Finished ---
